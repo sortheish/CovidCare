@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/liner_layout_rounded_corner">
+
+
+    <TextView
+        android:id="@+id/text_state_countries_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/app_text_color"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Maharashtra" />
+
+    <TextView
+        android:id="@+id/textViewConfirmed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_confirmed"
+        android:textColor="@color/app_text_color"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewRecovered"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_state_countries_name" />
+
+    <TextView
+        android:id="@+id/textViewDeceased"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_deceased"
+        android:textColor="@color/app_text_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRecovered"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewRecovered"
+        app:layout_constraintTop_toTopOf="@+id/textViewRecovered"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewRecovered"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_recovered"
+        android:textColor="@color/app_text_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewConfirmed"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDeceased"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewConfirmed"
+        app:layout_constraintTop_toTopOf="@+id/textViewConfirmed"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/list_confirmed_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_arrow_upward_white"
+        android:drawableTint="@color/text_confirmed_value"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="0dp"
+        android:paddingEnd="25dp"
+        android:singleLine="true"
+        android:textColor="@color/text_confirmed_value"
+        android:textSize="17sp"
+        android:text="@string/value_empty"
+        app:layout_constraintEnd_toStartOf="@+id/list_recovered_value"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRecovered" />
+
+    <TextView
+        android:id="@+id/list_recovered_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_arrow_upward_white"
+        android:drawableTint="@color/text_recovered_value"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="0dp"
+        android:paddingEnd="35dp"
+        android:singleLine="true"
+        android:text="@string/value_empty"
+        android:textColor="@color/text_recovered_value"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/list_confirmed_value"
+        app:layout_constraintEnd_toStartOf="@+id/list_deceased_value"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/list_confirmed_value"
+        app:layout_constraintTop_toTopOf="@+id/list_confirmed_value" />
+
+    <TextView
+        android:id="@+id/list_deceased_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:drawableEnd="@drawable/ic_arrow_upward_white"
+        android:drawableTint="@color/text_deceased_value"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="0dp"
+        android:paddingEnd="30dp"
+        android:singleLine="true"
+        android:text="@string/value_empty"
+        android:textColor="@color/text_deceased_value"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/list_recovered_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/list_recovered_value"
+        app:layout_constraintTop_toTopOf="@+id/list_recovered_value" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
