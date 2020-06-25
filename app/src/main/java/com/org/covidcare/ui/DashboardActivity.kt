@@ -13,20 +13,12 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
  * Created by ishwari s on 6/16/2020.
  */
 class DashboardActivity : AppCompatActivity() {
-    // private var countryPresenter: CountriesServicePresenter? = null
-    private var districtPresenter: DistrictServicePresenter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         openFragment(HomeFragment.newInstance())
-
-        districtPresenter = DistrictServicePresenter()
-        /*districtPresenter!!.getDistricts { districtSuccess->
-            if(districtSuccess){
-                Log.e("districtSuccess", "countrySuccess:$districtSuccess")
-            }
-        }*/
     }
 
     private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =

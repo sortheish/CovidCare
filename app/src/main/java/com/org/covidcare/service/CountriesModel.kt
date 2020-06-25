@@ -4,9 +4,7 @@ import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.org.covidcare.model.Count
-import com.org.covidcare.utilities.App
-import com.org.covidcare.utilities.COUNTRIES_URL
-import com.org.covidcare.utilities.CovidData
+import com.org.covidcare.utilities.*
 import org.json.JSONException
 
 
@@ -22,10 +20,10 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
                 try {
                     for (x in 0 until response.length()) {
                         val countries = response.getJSONObject(x)
-                        val country = countries.getString("country")
-                        val cases: Int = countries.getInt("cases")
-                        val recovered = countries.getInt("recovered")
-                        val deaths = countries.getInt("deaths")
+                        val country = countries.getString(COUNTRY_NAME)
+                        val cases: Int = countries.getInt(COUNTRY_CASES)
+                        val recovered = countries.getInt(COUNTRY_RECOVERED)
+                        val deaths = countries.getInt(COUNTRY_DEATHS)
                         val newCountry = Count(country, cases, recovered, deaths)
                         CovidData.dataCount.add(newCountry)
                     }

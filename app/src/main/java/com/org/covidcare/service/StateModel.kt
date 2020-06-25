@@ -4,12 +4,9 @@ import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.org.covidcare.model.Count
-import com.org.covidcare.model.State
-import com.org.covidcare.utilities.App
-import com.org.covidcare.utilities.CovidData
-import com.org.covidcare.utilities.STATE_URL
+import com.org.covidcare.utilities.*
 import org.json.JSONException
-import kotlin.collections.ArrayList
+
 
 /**
  * Created by ishwari s on 6/19/2020.
@@ -22,31 +19,26 @@ class StateModel : StateService.StateModel, CountService.CountModel {
                 JsonObjectRequest(Method.GET, STATE_URL, null, Response.Listener { response ->
                     clearData()
                     try {
-                        val dataValue = response.getJSONArray("data")
-                        for (x in 0 until dataValue.length()) {
-                            val dayWiseUpdates = dataValue.getJSONObject(x)
-                            val dayOfUpdates = dayWiseUpdates.getString("day")
-                            if (CovidData.compareToDay(dayOfUpdates)) {
-                                val regionalData = dayWiseUpdates.getJSONArray("regional")
-                                for (x in 0 until regionalData.length()) {
-                                    val stateData = regionalData.getJSONObject(x)
-                                    val stateName: String = stateData.getString("loc")
-                                    val cases = stateData.getInt("totalConfirmed")
-                                    val recovered = stateData.getInt("discharged")
-                                    val deaths = stateData.getInt("deaths")
+                        val dataValue = response.getJSONArray(STATE_DATA)
+                            val dayWiseUpdates = dataValue.getJSONObject(dataValue.length()-1)
+                            val regionalData = dayWiseUpdates.getJSONArray(STATE_REGIONAL_DATA)
+                                for (y in 0 until regionalData.length()) {
+                                    val stateData = regionalData.getJSONObject(y)
+                                    val stateName: String = stateData.getString(STATE_NAME)
+                                    val cases = stateData.getInt(STATE_CASES)
+                                    val recovered = stateData.getInt(STATE_RECOVERED)
+                                    val deaths = stateData.getInt(STATE_DEATHS)
                                     val newState = Count(stateName, cases, recovered, deaths)
                                     CovidData.dataCount.add(newState)
                                 }
-                            }
-                        }
-                        complete(true, "State")
+                        complete(true, INDIA)
                     } catch (e: JSONException) {
                         Log.e("JSON", "EXC:" + e.localizedMessage)
-                        complete(false, "State")
+                        complete(false, INDIA)
                     }
                 }, Response.ErrorListener { error ->
                     Log.e("ERROR", "Could not retrieve channels: $error")
-                    complete(false, "State")
+                    complete(false, INDIA)
                 }) {
                 override fun getBodyContentType(): String {
                     return "application/json; charset=utf-8"
@@ -82,5 +74,4 @@ class StateModel : StateService.StateModel, CountService.CountModel {
         }
         return sum
     }
-
 }

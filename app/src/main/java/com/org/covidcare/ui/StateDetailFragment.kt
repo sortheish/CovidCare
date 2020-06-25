@@ -5,46 +5,78 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.org.covidcare.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.org.covidcare.adapter.DataCountAdapter
+import com.org.covidcare.adapter.DistrictAdapter
+import com.org.covidcare.model.Count
+import com.org.covidcare.presenter.DistrictServicePresenter
+import com.org.covidcare.service.DistrictService
+import com.org.covidcare.utilities.CovidData
+import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [StateDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Created by ishwari s on 6/23/2020.
  */
-class StateDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class StateDetailFragment : Fragment(), DistrictService.DistrictView{
+    private lateinit var objCount: Count
+    private lateinit var textConfirmed: TextView
+    private lateinit var textRecovered: TextView
+    private lateinit var textDeceased: TextView
+    private lateinit var textStateName:TextView
+    private var districtPresenter: DistrictServicePresenter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    companion object {
+        private const val ARG_PARAM = "countObject"
+        fun newInstance(count: Count) =
+            StateDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(ARG_PARAM, count)
+                }
+            }
     }
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            arguments?.let {
+                objCount = it.getParcelable(ARG_PARAM)!!
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_state_detail, container, false)
+       val view =  inflater.inflate(R.layout.fragment_state_detail, container, false)
+        init(view)
+        districtPresenter?.setDistrictData(view)
+        return view
     }
 
-    companion object {
-        fun newInstance(param1: String, param2: String) =
-            StateDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun init(view:View) {
+        textConfirmed = view.findViewById(R.id.text_confirmed_state)
+        textRecovered = view.findViewById(R.id.text_recovered_state)
+        textDeceased = view.findViewById(R.id.text_deceased_state)
+        textStateName = view.findViewById(R.id.text_details_state_name)
+
+        districtPresenter = DistrictServicePresenter(this)
+        districtPresenter!!.getDistricts(objCount.region_name) { districtSuccess->
+            if(districtSuccess){
+              setUpAdapter()
             }
+        }
     }
+    private fun setUpAdapter() {
+        val layoutManager = LinearLayoutManager(activity)
+        list_of_data.layoutManager = layoutManager
+        list_of_data.adapter = DistrictAdapter(CovidData.districts)
+    }
+
+    override fun setDistrictData(view: View) {
+        textStateName.text = objCount.region_name
+        textConfirmed.text = objCount.cases_confirmed.toString()
+        textRecovered.text = objCount.case_recovered.toString()
+        textDeceased.text = objCount.case_death.toString()
+    }
+
 }

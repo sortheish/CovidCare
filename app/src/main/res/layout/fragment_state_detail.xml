@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_state_name"
+            android:id="@+id/text_details_state_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto"
-            android:text="@string/text_confirmed"
+            android:text="@string/value_empty"
             android:textColor="@color/app_text_color"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_value_confirmed"
+                android:id="@+id/text_confirmed_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
@@ -70,7 +70,7 @@
 
 
             <TextView
-                android:id="@+id/text_value_recovered_state"
+                android:id="@+id/text_recovered_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_detail_state_name"
@@ -94,7 +94,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_value_deceased_state"
+                android:id="@+id/text_deceased_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_recovered"
@@ -111,16 +111,16 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_of_districts"
+        android:id="@+id/list_of_data"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_all_data" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
     <LinearLayout

@@ -11,7 +11,7 @@ import com.org.covidcare.model.Count
 /**
  * Created by ishwari s on 6/23/2020.
  */
-class DataCountAdapter(private val dataCount: ArrayList<Count>,val value_state:String,val itemClick:(Count)->Unit) :
+class DataCountAdapter(private val dataCount: ArrayList<Count>,val itemClick:(Count)->Unit) :
     RecyclerView.Adapter<DataCountAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,9 +39,7 @@ class DataCountAdapter(private val dataCount: ArrayList<Count>,val value_state:S
             textRecoveredValue.text = dataCount.case_recovered.toString()
             textDeceasedValue.text = dataCount.case_death.toString()
 
-            if(value_state == "State") {
-                itemView.setOnClickListener { itemClick(dataCount) }
-            }
+            itemView.setOnClickListener { itemClick(dataCount) }
         }
     }
 

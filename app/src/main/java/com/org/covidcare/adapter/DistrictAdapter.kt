@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.org.covidcare.R
-import com.org.covidcare.model.State
+import com.org.covidcare.model.District
 
 /**
- * Created by ishwari s on 6/23/2020.
+ * Created by ishwari s on 6/24/2020.
  */
-class StateAdapter(private val states: ArrayList<State>) :
-    RecyclerView.Adapter<StateAdapter.ViewHolder>() {
+class DistrictAdapter(private val districts: ArrayList<District>) :
+    RecyclerView.Adapter<DistrictAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -21,11 +21,11 @@ class StateAdapter(private val states: ArrayList<State>) :
     }
 
     override fun getItemCount(): Int {
-        return states.count()
+        return districts.count()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindMessage(states[position])
+        holder.bindDistrictData(districts[position])
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,11 +38,11 @@ class StateAdapter(private val states: ArrayList<State>) :
             itemView.findViewById<TextView>(R.id.list_recovered_value)!!
         private val textDeceasedValue = itemView.findViewById<TextView>(R.id.list_deceased_value)!!
 
-        fun bindMessage(state: State) {
-            textStateCountryName.text = state.state_name
-            textConfirmedValue.text = state.cases_confirmed.toString()
-            textRecoveredValue.text = state.case_recovered.toString()
-            textDeceasedValue.text = state.case_death.toString()
+        fun bindDistrictData(district: District) {
+            textStateCountryName.text = district.district_name
+            textConfirmedValue.text = district.cases_confirmed
+            textRecoveredValue.text = district.case_recovered
+            textDeceasedValue.text = district.case_death
         }
     }
 

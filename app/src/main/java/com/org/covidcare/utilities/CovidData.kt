@@ -14,6 +14,7 @@ object CovidData {
 
     val dataCount = ArrayList<Count>()
     val districts = ArrayList<District>()
+
     fun compareToDay(userDate: String?): Boolean {
         if (userDate == null) {
             return false
