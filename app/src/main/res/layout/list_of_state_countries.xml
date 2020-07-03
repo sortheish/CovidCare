@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="110dp"
     android:layout_marginTop="10dp"
     android:background="@drawable/liner_layout_rounded_corner">
 
@@ -13,12 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto"
         android:textColor="@color/app_text_color"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFlag"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Maharashtra" />
 
@@ -80,9 +79,9 @@
         android:paddingStart="0dp"
         android:paddingEnd="25dp"
         android:singleLine="true"
+        android:text="@string/value_empty"
         android:textColor="@color/text_confirmed_value"
         android:textSize="17sp"
-        android:text="@string/value_empty"
         app:layout_constraintEnd_toStartOf="@+id/list_recovered_value"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,5 +125,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/list_recovered_value"
         app:layout_constraintTop_toTopOf="@+id/list_recovered_value" />
+
+    <ImageView
+        android:id="@+id/imageViewFlag"
+        android:layout_width="45dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/text_image_desc"
+        app:layout_constraintEnd_toStartOf="@+id/text_state_countries_name"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

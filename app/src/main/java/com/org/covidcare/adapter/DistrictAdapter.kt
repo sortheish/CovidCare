@@ -3,6 +3,7 @@ package com.org.covidcare.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.org.covidcare.R
@@ -37,12 +38,15 @@ class DistrictAdapter(private val districts: ArrayList<District>) :
         private val textRecoveredValue =
             itemView.findViewById<TextView>(R.id.list_recovered_value)!!
         private val textDeceasedValue = itemView.findViewById<TextView>(R.id.list_deceased_value)!!
+        private val imageFlag = itemView.findViewById<ImageView>(R.id.imageViewFlag)
 
         fun bindDistrictData(district: District) {
             textStateCountryName.text = district.district_name
             textConfirmedValue.text = district.cases_confirmed
             textRecoveredValue.text = district.case_recovered
             textDeceasedValue.text = district.case_death
+            imageFlag.visibility = View.GONE
+
         }
     }
 

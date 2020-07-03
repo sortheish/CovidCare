@@ -7,15 +7,18 @@ import android.os.Parcelable
  * Created by ishwari s on 6/23/2020.
  */
 class Count(
-    val region_name: String?, val cases_confirmed: Int,
-    val case_recovered: Int, val case_death: Int
+    val region_name: String?, val region_flag: String?, val cases_confirmed: Int,
+    val case_recovered: Int, val case_death: Int, val case_active: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
+        parcel.readString(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
     )
+
     override fun writeToParcel(dest: Parcel?, flags: Int) {
         TODO("Not yet implemented")
     }

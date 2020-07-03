@@ -2,8 +2,9 @@ package com.org.covidcare.utilities
 
 import com.org.covidcare.model.Count
 import com.org.covidcare.model.District
+import java.text.DateFormat
+import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -14,8 +15,10 @@ object CovidData {
 
     val dataCount = ArrayList<Count>()
     val districts = ArrayList<District>()
+    val graphDate = ArrayList<String>()
+    val graphCount = ArrayList<Count>()
 
-    fun compareToDay(userDate: String?): Boolean {
+    /*fun compareToDay(userDate: String?): Boolean {
         if (userDate == null) {
             return false
         }
@@ -26,5 +29,18 @@ object CovidData {
             return true
         }
         return false
+    }*/
+
+    fun dateForGraph(graphDate: String): String {
+        var outputDateStr = ""
+        try {
+            val inputFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+            val outputFormat: DateFormat = SimpleDateFormat("ddMMM", Locale.ENGLISH)
+            val date = inputFormat.parse(graphDate)
+            outputDateStr = outputFormat.format(date!!)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        return outputDateStr
     }
 }

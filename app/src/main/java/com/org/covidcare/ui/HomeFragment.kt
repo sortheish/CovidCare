@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
 import com.org.covidcare.R
 import com.org.covidcare.adapter.DataCountAdapter
 import com.org.covidcare.model.Count
@@ -15,12 +18,10 @@ import com.org.covidcare.presenter.CountriesServicePresenter
 import com.org.covidcare.presenter.StateServicePresenter
 import com.org.covidcare.service.CountriesService
 import com.org.covidcare.service.StateService
-import com.org.covidcare.utilities.CovidData
-import com.org.covidcare.utilities.INDIA
-import com.org.covidcare.utilities.WORLD
+import com.org.covidcare.utilities.*
+import com.org.covidcare.view.GraphViewPresenter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -29,11 +30,13 @@ import kotlin.collections.ArrayList
 class HomeFragment : Fragment(), CountriesService.CountriesView,
     StateService.StatesView {
     private var countryPresenter: CountriesServicePresenter? = null
+    private var graphPresenter: GraphViewPresenter? = null
     private var statePresenter: StateServicePresenter? = null
     private lateinit var textConfirmed: TextView
     private lateinit var textRecovered: TextView
     private lateinit var textDeceased: TextView
     private lateinit var dataCountAdapterAdapter: DataCountAdapter
+
     private var toggleButtonValue: String? = INDIA
 
     companion object {
@@ -63,7 +66,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         view.toggle_india_world.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
-                    R.id.btnIndia->{
+                    R.id.btnIndia -> {
                         statePresenter!!.getStates { stateSuccess, _ ->
                             if (stateSuccess) {
                                 statePresenter?.setStateData(view)
@@ -71,10 +74,15 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                             }
                         }
                         toggleButtonValue = INDIA
+                        view.findViewById<PieChart>(R.id.pieChart).visibility = View.GONE
+                        view.findViewById<BarChart>(R.id.barChart).visibility = View.VISIBLE
+                        view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility =
+                            View.VISIBLE
+
                         view.findViewById<Button>(R.id.btnWorld).isClickable = true
                         view.findViewById<Button>(R.id.btnIndia).isClickable = false
                     }
-                    R.id.btnWorld->{
+                    R.id.btnWorld -> {
                         countryPresenter!!.getCountries { countrySuccess ->
                             if (countrySuccess) {
                                 countryPresenter?.setCountryData(view)
@@ -82,6 +90,10 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                             }
                         }
                         toggleButtonValue = WORLD
+                        view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility = View.GONE
+                        view.findViewById<BarChart>(R.id.barChart).visibility = View.GONE
+                        view.findViewById<PieChart>(R.id.pieChart).visibility = View.VISIBLE
+
                         view.findViewById<Button>(R.id.btnWorld).isClickable = false
                         view.findViewById<Button>(R.id.btnIndia).isClickable = true
                     }
@@ -109,20 +121,53 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
 
         countryPresenter = CountriesServicePresenter(this)
         statePresenter = StateServicePresenter(this)
+
+        graphPresenter = GraphViewPresenter()
     }
 
     override fun setCountryData(view: View) {
         textConfirmed.text = countryPresenter?.getConfirmedCount().toString()
         textRecovered.text = countryPresenter?.getRecoveredCount().toString()
         textDeceased.text = countryPresenter?.getDeceasedCount().toString()
+        graphPresenter?.getPieChart(
+            view, Count(
+                "World",
+                "",
+                countryPresenter!!.getConfirmedCount(),
+                countryPresenter!!.getRecoveredCount(),
+                countryPresenter!!.getDeceasedCount(),
+                countryPresenter!!.getActiveCount()
+            )
+        )
         view.findViewById<TextView>(R.id.text_all_data).text =
             getString(R.string.text_all_countries)
+
     }
 
     override fun setStateData(view: View) {
         textConfirmed.text = statePresenter?.getConfirmedCount().toString()
         textRecovered.text = statePresenter?.getRecoveredCount().toString()
         textDeceased.text = statePresenter?.getDeceasedCount().toString()
+
+        view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility = View.VISIBLE
+        graphPresenter?.getBarChart(view, COUNTRY_CASES)
+        radioGroupDetail.check(R.id.rad_btn_conf)
+        view.radioGroupDetail.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rad_btn_conf -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_CASES)
+                }
+                R.id.rad_btn_active -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_ACTIVE)
+                }
+                R.id.rad_btn_recover -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_RECOVERED)
+                }
+                R.id.rad_btn_death -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_DEATHS)
+                }
+            }
+        }
         view.findViewById<TextView>(R.id.text_all_data).text = getString(R.string.text_all_state)
     }
 
@@ -132,4 +177,5 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         transaction?.addToBackStack(null)
         transaction?.commit()
     }
+
 }

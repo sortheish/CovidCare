@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.org.covidcare.R
-import com.org.covidcare.presenter.DistrictServicePresenter
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 /**

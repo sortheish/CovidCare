@@ -8,6 +8,7 @@
     <string name="text_confirmed">Confirmed</string>
     <string name="text_recovered">Recovered</string>
     <string name="text_deceased">Deceased</string>
+    <string name="text_death">Death</string>
     <string name="text_india">India</string>
     <string name="text_world">World</string>
     <string name="text_null">null</string>
@@ -16,4 +17,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="value_empty">--</string>
+    <string name="text_active">Active</string>
+    <string name="text_image_desc">flag image of Country</string>
 </resources>

@@ -8,11 +8,13 @@ interface CountService {
         fun getConfirmedCount(): Int
         fun getRecoveredCount(): Int
         fun getDeceasedCount(): Int
+        fun getActiveCount(): Int
     }
 
     interface CountPresenter {
         fun getConfirmedCount(): Int
         fun getRecoveredCount(): Int
         fun getDeceasedCount(): Int
+        fun getActiveCount(): Int
     }
 }
