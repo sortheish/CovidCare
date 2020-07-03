@@ -8,6 +8,7 @@ import android.view.View
 interface StateService {
     interface StateModel {
         fun getStates(complete: (Boolean, String) -> Unit)
+        fun getStateCount(state_name: String?,complete: (Boolean) -> Unit)
         fun clearData()
     }
 
@@ -17,6 +18,7 @@ interface StateService {
 
     interface StatePresenter {
         fun getStates(complete: (Boolean, String) -> Unit)
+        fun getStateCount(state_name: String?,complete: (Boolean) -> Unit)
         fun setStateData(view: View)
         fun clearData()
     }

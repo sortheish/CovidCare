@@ -30,4 +30,6 @@ class CountriesServicePresenter(countryView: CountriesService.CountriesView) :
     override fun getRecoveredCount(): Int = model.getRecoveredCount()
 
     override fun getDeceasedCount(): Int = model.getDeceasedCount()
+
+    override fun getActiveCount(): Int = model.getActiveCount()
 }

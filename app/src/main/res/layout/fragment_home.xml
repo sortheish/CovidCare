@@ -1,177 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/liner_layout_rounded_corner"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggle_india_world"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/solid_spinner_color"
-            android:orientation="horizontal"
-            app:singleSelection="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnIndia"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@drawable/togglegrout_button_layout"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_india"
-                android:textColor="@color/app_text_color"
-                android:textSize="18sp"
-                app:strokeColor="@color/app_text_color"
-                app:strokeWidth="0.5dp" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@drawable/togglegrout_button_layout"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_world"
-                android:textColor="@color/app_text_color"
-                android:textSize="18sp"
-                app:strokeColor="@color/app_text_color"
-                app:strokeWidth="0.5dp" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggle_india_world"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/solid_spinner_color"
+                android:orientation="horizontal"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnIndia"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@drawable/togglegrout_button_layout"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/text_india"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="18sp"
+                    app:strokeColor="@color/app_text_color"
+                    app:strokeWidth="0.5dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWorld"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@drawable/togglegrout_button_layout"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/text_world"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="18sp"
+                    app:strokeColor="@color/app_text_color"
+                    app:strokeWidth="0.5dp" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/text_detail_state_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/text_confirmed"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/text_confirmed_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:layout_toEndOf="@+id/text_detail_state_name"
+                    android:drawableEnd="@drawable/ic_arrow_upward_white"
+                    android:drawableTint="@color/text_confirmed_value"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/value_empty"
+                    android:textColor="@color/text_confirmed_value"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/text_recovered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_detail_state_name"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/text_recovered"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/text_recovered_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_detail_state_name"
+                    android:layout_marginStart="100dp"
+                    android:layout_toEndOf="@+id/text_recovered"
+                    android:drawableEnd="@drawable/ic_arrow_upward_white"
+                    android:drawableTint="@color/text_recovered_value"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/value_empty"
+                    android:textColor="@color/text_recovered_value"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/text_deceased"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_recovered"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/text_deceased"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/text_deceased_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_recovered"
+                    android:layout_marginStart="105dp"
+                    android:layout_toEndOf="@+id/text_deceased"
+                    android:drawableEnd="@drawable/ic_arrow_upward_white"
+                    android:drawableTint="@color/text_deceased_value"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/value_empty"
+                    android:textColor="@color/text_deceased_value"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_of_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_all_data" />
 
-            <TextView
-                android:id="@+id/text_detail_state_name"
-                android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_all_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/app_text_color"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPie"
+            tools:text="All Countries" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPie"
+            android:layout_width="0dp"
+            android:layout_height="265dp"
+            android:background="@drawable/graph_layout"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupDetail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:checkedButton="@+id/rad_btn_conf"
                 android:fontFamily="@font/roboto"
-                android:text="@string/text_confirmed"
-                android:textColor="@color/app_text_color"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="28dp"
+                android:visibility="gone">
 
-            <TextView
-                android:id="@+id/text_value_confirmed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_toEndOf="@+id/text_detail_state_name"
-                android:drawableEnd="@drawable/ic_arrow_upward_white"
-                android:drawableTint="@color/text_confirmed_value"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_confirmed"
-                android:textColor="@color/text_confirmed_value"
-                android:textSize="17sp" />
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rad_btn_conf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/app_text_color"
+                    android:text="@string/text_confirmed"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/text_recovered"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_detail_state_name"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_recovered"
-                android:textColor="@color/app_text_color"
-                android:textSize="18sp" />
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rad_btn_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/app_text_color"
+                    android:text="@string/text_active"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="12sp" />
 
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rad_btn_recover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/app_text_color"
+                    android:text="@string/text_recovered"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/text_value_recovered_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_detail_state_name"
-                android:layout_marginStart="100dp"
-                android:layout_toEndOf="@+id/text_recovered"
-                android:drawableEnd="@drawable/ic_arrow_upward_white"
-                android:drawableTint="@color/text_recovered_value"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_recovered"
-                android:textColor="@color/text_recovered_value"
-                android:textSize="17sp" />
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rad_btn_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/app_text_color"
+                    android:text="@string/text_deceased"
+                    android:textColor="@color/app_text_color"
+                    android:textSize="12sp" />
+            </RadioGroup>
 
-            <TextView
-                android:id="@+id/text_deceased"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_recovered"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_deceased"
-                android:textColor="@color/app_text_color"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/text_value_deceased_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_recovered"
-                android:layout_marginStart="105dp"
-                android:layout_toEndOf="@+id/text_deceased"
-                android:drawableEnd="@drawable/ic_arrow_upward_white"
-                android:drawableTint="@color/text_deceased_value"
-                android:fontFamily="@font/roboto"
-                android:text="@string/text_deceased"
-                android:textColor="@color/text_deceased_value"
-                android:textSize="17sp" />
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_of_districts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_all_data" />
-
-    <TextView
-        android:id="@+id/text_all_data"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/app_text_color"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:text="All Countries" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

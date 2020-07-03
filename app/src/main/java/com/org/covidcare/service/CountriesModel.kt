@@ -4,9 +4,7 @@ import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.org.covidcare.model.Count
-import com.org.covidcare.utilities.App
-import com.org.covidcare.utilities.COUNTRIES_URL
-import com.org.covidcare.utilities.CovidData
+import com.org.covidcare.utilities.*
 import org.json.JSONException
 
 
@@ -22,11 +20,14 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
                 try {
                     for (x in 0 until response.length()) {
                         val countries = response.getJSONObject(x)
-                        val country = countries.getString("country")
-                        val cases: Int = countries.getInt("cases")
-                        val recovered = countries.getInt("recovered")
-                        val deaths = countries.getInt("deaths")
-                        val newCountry = Count(country, cases, recovered, deaths)
+                        val countryFlag = countries.getJSONObject(COUNTRY_INFO)
+                        val country = countries.getString(COUNTRY_NAME)
+                        val cases: Int = countries.getInt(COUNTRY_CASES)
+                        val recovered = countries.getInt(COUNTRY_RECOVERED)
+                        val deaths = countries.getInt(COUNTRY_DEATHS)
+                        val active = countries.getInt(COUNTRY_ACTIVE)
+                        val flag = countryFlag.getString(COUNTRY_flag)
+                        val newCountry = Count(country, flag, cases, recovered, deaths, active)
                         CovidData.dataCount.add(newCountry)
                     }
                     complete(true)
@@ -69,6 +70,14 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
         var sum = 0
         for (x in 0 until CovidData.dataCount.size) {
             sum += CovidData.dataCount[x].case_death
+        }
+        return sum
+    }
+
+    override fun getActiveCount(): Int {
+        var sum = 0
+        for (x in 0 until CovidData.dataCount.size) {
+            sum += CovidData.dataCount[x].case_active
         }
         return sum
     }

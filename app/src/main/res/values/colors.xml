@@ -12,4 +12,6 @@
     <color name="text_recovered_value">#27AE60</color>
     <color name="text_deceased_value">#000000</color>
     <color name="solid_spinner_color">#2D6B8D</color>
+    <color name="graph_layout_color">#CFD8DC</color>
+    <color name="graph_gray_color">#303030</color>
 </resources>

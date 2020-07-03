@@ -5,28 +5,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.org.covidcare.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.org.covidcare.adapter.DistrictAdapter
+import com.org.covidcare.model.Count
+import com.org.covidcare.presenter.DistrictServicePresenter
+import com.org.covidcare.presenter.StateServicePresenter
+import com.org.covidcare.service.DistrictService
+import com.org.covidcare.service.StateService
+import com.org.covidcare.utilities.*
+import com.org.covidcare.view.GraphViewPresenter
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [StateDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Created by ishwari s on 6/23/2020.
  */
-class StateDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class StateDetailFragment : Fragment(), DistrictService.DistrictView, StateService.StatesView {
+    private lateinit var objCount: Count
+    private lateinit var textStateName: TextView
+    private var districtPresenter: DistrictServicePresenter? = null
+    private var statePresenter: StateServicePresenter? = null
+    private var graphPresenter: GraphViewPresenter? = null
+
+    companion object {
+        private const val ARG_PARAM = "countObject"
+        fun newInstance(count: Count) =
+            StateDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(ARG_PARAM, count)
+                }
+            }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            objCount = it.getParcelable(ARG_PARAM)!!
         }
     }
 
@@ -34,17 +50,61 @@ class StateDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_state_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_state_detail, container, false)
+        init(view)
+        districtPresenter?.setDistrictData(view)
+        return view
     }
 
-    companion object {
-        fun newInstance(param1: String, param2: String) =
-            StateDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun init(view: View) {
+        textStateName = view.findViewById(R.id.text_details_state_name)
+
+        graphPresenter = GraphViewPresenter()
+        districtPresenter = DistrictServicePresenter(this)
+        statePresenter = StateServicePresenter(this)
+        districtPresenter!!.getDistricts(objCount.region_name) { districtSuccess ->
+            if (districtSuccess) {
+                setUpAdapter()
+            }
+        }
+
+        statePresenter!!.getStateCount(objCount.region_name) { stateSuccess ->
+            if (stateSuccess) {
+                graphPresenter?.getBarChart(view, COUNTRY_CASES)
+                statePresenter!!.setStateData(view)
+            }
+        }
+    }
+
+    private fun setUpAdapter() {
+        val layoutManager = LinearLayoutManager(activity)
+        list_of_data.layoutManager = layoutManager
+        list_of_data.adapter = DistrictAdapter(CovidData.districts)
+    }
+
+    override fun setDistrictData(view: View) {
+        textStateName.text = objCount.region_name
+        graphPresenter?.getPieChart(view, objCount)
+    }
+
+    override fun setStateData(view: View) {
+        radioGroupDetail.check(R.id.rad_btn_conf)
+        view.radioGroupDetail.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rad_btn_conf -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_CASES)
+                }
+                R.id.rad_btn_active -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_ACTIVE)
+                }
+                R.id.rad_btn_recover -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_RECOVERED)
+                }
+                R.id.rad_btn_death -> {
+                    graphPresenter?.getBarChart(view, COUNTRY_DEATHS)
                 }
             }
+        }
     }
+
 }
