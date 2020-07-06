@@ -25,9 +25,9 @@ class DistrictModel : DistrictService.DistrictModel {
                     for (x in 0 until sData.length()) {
                         val key = keys.next()
                         val district = sData.getJSONObject(key)
-                        val cases = district.getString(DISTRICT_CASES)
-                        val recovered = district.getString(DISTRICT_RECOVERED)
-                        val deaths = district.getString(DISTRICT_DEATHS)
+                        val cases = district.getInt(DISTRICT_CASES)
+                        val recovered = district.getInt(DISTRICT_RECOVERED)
+                        val deaths = district.getInt(DISTRICT_DEATHS)
                         val newDistrict = District(key, cases, recovered, deaths)
                         CovidData.districts.add(newDistrict)
                     }
