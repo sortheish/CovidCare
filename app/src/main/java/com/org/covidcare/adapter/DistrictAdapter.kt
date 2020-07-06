@@ -26,6 +26,7 @@ class DistrictAdapter(private val districts: ArrayList<District>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        districts.sortByDescending { it.cases_confirmed  }
         holder.bindDistrictData(districts[position])
     }
 
@@ -42,9 +43,9 @@ class DistrictAdapter(private val districts: ArrayList<District>) :
 
         fun bindDistrictData(district: District) {
             textStateCountryName.text = district.district_name
-            textConfirmedValue.text = district.cases_confirmed
-            textRecoveredValue.text = district.case_recovered
-            textDeceasedValue.text = district.case_death
+            textConfirmedValue.text = district.cases_confirmed.toString()
+            textRecoveredValue.text = district.case_recovered.toString()
+            textDeceasedValue.text = district.case_death.toString()
             imageFlag.visibility = View.GONE
 
         }
