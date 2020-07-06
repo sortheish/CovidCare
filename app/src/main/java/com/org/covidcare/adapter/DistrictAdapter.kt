@@ -1,6 +1,5 @@
 package com.org.covidcare.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.org.covidcare.R
 import com.org.covidcare.model.District
-import com.org.covidcare.utilities.CovidData
 
 /**
  * Created by ishwari s on 6/24/2020.
