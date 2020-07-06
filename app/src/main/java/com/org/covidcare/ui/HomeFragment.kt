@@ -133,7 +133,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
-    
+
     private fun setUpAdapter(dataCount: ArrayList<Count>) {
         dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
             if (toggleButtonValue.equals(INDIA)) {
