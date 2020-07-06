@@ -27,6 +27,7 @@ class DataCountAdapter(private val dataCount: ArrayList<Count>, val itemClick: (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        dataCount.sortByDescending { it.cases_confirmed }
         holder.bindCountData(dataCount[position])
     }
 

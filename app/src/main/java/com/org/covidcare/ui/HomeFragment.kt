@@ -1,12 +1,15 @@
 package com.org.covidcare.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.BarChart
@@ -19,6 +22,7 @@ import com.org.covidcare.presenter.StateServicePresenter
 import com.org.covidcare.service.CountriesService
 import com.org.covidcare.service.StateService
 import com.org.covidcare.utilities.*
+import com.org.covidcare.utilities.CovidData.dataCount
 import com.org.covidcare.view.GraphViewPresenter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -55,9 +59,18 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         )
         init(view)
 
+        countryPresenter!!.getCountries { countrySuccess ->
+            if (countrySuccess) {
+                val countIndia = dataCount.find { it.region_name == "India" }
+                Log.e("Country","India"+countIndia?.cases_confirmed)
+                textConfirmed.text = countIndia?.cases_confirmed.toString()
+                textRecovered.text = countIndia?.case_recovered.toString()
+                textDeceased.text = countIndia?.case_death.toString()
+            }
+        }
         statePresenter!!.getStates { stateSuccess, _ ->
             if (stateSuccess) {
-                setUpAdapter(CovidData.dataCount)
+                setUpAdapter(dataCount)
                 statePresenter?.setStateData(view)
             }
         }
@@ -67,6 +80,14 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
             if (isChecked) {
                 when (checkedId) {
                     R.id.btnIndia -> {
+                        countryPresenter!!.getCountries { countrySuccess ->
+                            if (countrySuccess) {
+                                val countIndia = dataCount.find { it.region_name == "India" }
+                                textConfirmed.text = countIndia?.cases_confirmed.toString()
+                                textRecovered.text = countIndia?.case_recovered.toString()
+                                textDeceased.text = countIndia?.case_death.toString()
+                            }
+                        }
                         statePresenter!!.getStates { stateSuccess, _ ->
                             if (stateSuccess) {
                                 statePresenter?.setStateData(view)
@@ -103,6 +124,16 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         return view
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+    
     private fun setUpAdapter(dataCount: ArrayList<Count>) {
         dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
             if (toggleButtonValue.equals(INDIA)) {
@@ -129,6 +160,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         textConfirmed.text = countryPresenter?.getConfirmedCount().toString()
         textRecovered.text = countryPresenter?.getRecoveredCount().toString()
         textDeceased.text = countryPresenter?.getDeceasedCount().toString()
+
         graphPresenter?.getPieChart(
             view, Count(
                 "World",
@@ -145,9 +177,9 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     override fun setStateData(view: View) {
-        textConfirmed.text = statePresenter?.getConfirmedCount().toString()
+        /*textConfirmed.text = statePresenter?.getConfirmedCount().toString()
         textRecovered.text = statePresenter?.getRecoveredCount().toString()
-        textDeceased.text = statePresenter?.getDeceasedCount().toString()
+        textDeceased.text = statePresenter?.getDeceasedCount().toString()*/
 
         view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility = View.VISIBLE
         graphPresenter?.getBarChart(view, COUNTRY_CASES)
@@ -179,3 +211,4 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
 }
+
