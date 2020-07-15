@@ -26,14 +26,15 @@ class GraphView:GraphService.GraphView {
                 for(x in 0 until CovidData.graphCount.size){
                     yValueGroup.add(BarEntry(x.toFloat(), CovidData.graphCount[x].cases_confirmed.toFloat()))
                     barDataSet = BarDataSet(yValueGroup, "")
-                    barDataSet.setColors(Color.rgb(235,87,87))
+                    barDataSet.setColors(Color.rgb(255,152,0))
+
                 }
             }
             COUNTRY_ACTIVE->{
                 for(x in 0 until CovidData.graphCount.size){
                     yValueGroup.add(BarEntry(x.toFloat(), CovidData.graphCount[x].case_active.toFloat()))
                     barDataSet = BarDataSet(yValueGroup, "")
-                    barDataSet.setColors(Color.rgb(230,165,32))
+                    barDataSet.setColors(Color.rgb(235,87,87))
                 }
             }
             COUNTRY_RECOVERED -> {
@@ -74,7 +75,7 @@ class GraphView:GraphService.GraphView {
         listPie.add(PieEntry(count.case_recovered.toFloat(), view.context.getString(R.string.text_recovered)))
         listPie.add(PieEntry(count.case_death.toFloat(), view.context.getString(R.string.text_death)))
 
-        listColors.add( view.context.getColor(R.color.text_confirmed_value))
+        listColors.add( view.context.getColor(R.color.text_active_value))
         listColors.add( view.context.getColor(R.color.text_recovered_value))
         listColors.add( view.context.getColor (R.color.graph_gray_color))
         val pieDataSet = PieDataSet(listPie,"")

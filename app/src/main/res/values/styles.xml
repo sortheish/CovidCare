@@ -6,8 +6,8 @@
         <item name="colorPrimaryDark">@color/app_text_color</item>
     </style>
 
-    <style name="BottomNavigationTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
-        <item name="colorPrimary">@color/text_tab_change_color</item>
+    <style name="BottomNavigationTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+       <item name="colorPrimary">@color/text_tab_change_color</item>
         <item name="android:textColorSecondary">@color/app_text_color</item>
     </style>
 

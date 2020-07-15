@@ -19,4 +19,20 @@
     <string name="value_empty">--</string>
     <string name="text_active">Active</string>
     <string name="text_image_desc">flag image of Country</string>
+    <string name="text_login_with_Cybage">Login With Cybage Email </string>
+    <string name="text_more_feature">For More Features</string>
+    <string name="text_desc_about">desc_about</string>
+    <string name="text_desc_header">desc_header</string>
+    <string name="text_signin">Sign In</string>
+    <string name="text_login">Login</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Password</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_go">GO</string>
+    <string name="text_welcome">Welcome</string>
+    <string name="text_logout">Logout</string>
+    <string name="text_help_line">Help Line</string>
+    <string name="text_self_assist">Self Assist</string>
+    <string name="text_feed">Feed</string>
+    <string name="text_desc_image_cybage">desc_image_cybage</string>
 </resources>
