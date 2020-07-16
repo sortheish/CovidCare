@@ -1,6 +1,8 @@
 package com.org.covidcare.service
 
 import android.util.Log
+import android.widget.Toast
+import com.android.volley.NetworkError
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.org.covidcare.model.Count
@@ -83,4 +85,5 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
     }
 
 }
+
 

@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/app_dark_background</item>
-        <item name="colorPrimaryDark">@color/app_text_color</item>
+        <item name="colorPrimaryDark">@color/app_dark_background</item>
     </style>
 
     <style name="BottomNavigationTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
@@ -15,4 +15,28 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="AlertDialogCustom" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="android:background">@color/alert_dialog_text_color</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>
+    </style>
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/text_deceased_value</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">7dp</item>
+    </style>
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="buttonTint">@color/text_deceased_value</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
 </resources>

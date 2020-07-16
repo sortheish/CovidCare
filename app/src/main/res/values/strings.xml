@@ -19,4 +19,5 @@
     <string name="value_empty">--</string>
     <string name="text_active">Active</string>
     <string name="text_image_desc">flag image of Country</string>
+    <string name="text_alert_internet">Check Internet Connection</string>
 </resources>
