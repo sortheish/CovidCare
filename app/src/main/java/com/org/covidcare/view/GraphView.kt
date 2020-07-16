@@ -3,13 +3,17 @@ package com.org.covidcare.view
 import android.graphics.Color
 import android.view.View
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.org.covidcare.R
 import com.org.covidcare.model.Count
 import com.org.covidcare.utilities.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_state_detail.view.*
+import kotlinx.android.synthetic.main.fragment_state_detail.view.pieChart
 
 /**
  * Created by ishwari s on 6/26/2020.
@@ -26,14 +30,14 @@ class GraphView:GraphService.GraphView {
                 for(x in 0 until CovidData.graphCount.size){
                     yValueGroup.add(BarEntry(x.toFloat(), CovidData.graphCount[x].cases_confirmed.toFloat()))
                     barDataSet = BarDataSet(yValueGroup, "")
-                    barDataSet.setColors(Color.rgb(235,87,87))
+                    barDataSet.setColors(Color.rgb(255,152,0))
                 }
             }
             COUNTRY_ACTIVE->{
                 for(x in 0 until CovidData.graphCount.size){
                     yValueGroup.add(BarEntry(x.toFloat(), CovidData.graphCount[x].case_active.toFloat()))
                     barDataSet = BarDataSet(yValueGroup, "")
-                    barDataSet.setColors(Color.rgb(230,165,32))
+                    barDataSet.setColors(Color.rgb(235,87,87))
                 }
             }
             COUNTRY_RECOVERED -> {
@@ -76,8 +80,9 @@ class GraphView:GraphService.GraphView {
 
         listColors.add( view.context.getColor(R.color.text_confirmed_value))
         listColors.add( view.context.getColor(R.color.text_recovered_value))
-        listColors.add( view.context.getColor (R.color.graph_gray_color))
-        val pieDataSet = PieDataSet(listPie,"")
+        listColors.add( view.context.getColor (R.color.text_deceased_value))
+
+        val pieDataSet = PieDataSet(listPie,"Pie Chart")
         pieDataSet.colors = listColors
         pieDataSet.valueTextColor= view.context.getColor(R.color.app_text_color)
         pieDataSet.valueTextSize = 15f
@@ -85,6 +90,7 @@ class GraphView:GraphService.GraphView {
         //view.pieChart.legend.textSize = 15f
         view.pieChart.legend.formToTextSpace= 5f
         view.pieChart.legend.textColor = Color.WHITE
+        pieDataSet.valueFormatter = PercentFormatter(view.pieChart)
         view.pieChart.setUsePercentValues(true)
         view.pieChart.isDrawHoleEnabled = false
         view.pieChart.description.isEnabled = false
