@@ -2,7 +2,6 @@ package com.org.covidcare.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.org.covidcare.R
 import com.org.covidcare.adapter.DataCountAdapter
 import com.org.covidcare.model.Count
@@ -39,7 +39,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     private lateinit var textConfirmed: TextView
     private lateinit var textRecovered: TextView
     private lateinit var textDeceased: TextView
-    private lateinit var dataCountAdapterAdapter: DataCountAdapter
+    private var dataCountAdapterAdapter: DataCountAdapter? = null
 
     private var toggleButtonValue: String? = INDIA
 
@@ -58,14 +58,15 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
             false
         )
         init(view)
-
         countryPresenter!!.getCountries { countrySuccess ->
             if (countrySuccess) {
                 val countIndia = dataCount.find { it.region_name == "India" }
-                Log.e("Country","India"+countIndia?.cases_confirmed)
-                textConfirmed.text = countIndia?.cases_confirmed.toString()
-                textRecovered.text = countIndia?.case_recovered.toString()
-                textDeceased.text = countIndia?.case_death.toString()
+                val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                textConfirmed.text = textConfirmedIndia
+                textRecovered.text = textRecoveredIndia
+                textDeceased.text = textDeceasedIndia
             }
         }
         statePresenter!!.getStates { stateSuccess, _ ->
@@ -80,41 +81,62 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
             if (isChecked) {
                 when (checkedId) {
                     R.id.btnIndia -> {
-                        countryPresenter!!.getCountries { countrySuccess ->
-                            if (countrySuccess) {
-                                val countIndia = dataCount.find { it.region_name == "India" }
-                                textConfirmed.text = countIndia?.cases_confirmed.toString()
-                                textRecovered.text = countIndia?.case_recovered.toString()
-                                textDeceased.text = countIndia?.case_death.toString()
+                        if (CovidData.hasNetworkAvailable(context!!)) {
+                            countryPresenter!!.getCountries { countrySuccess ->
+                                if (countrySuccess) {
+                                    val countIndia = dataCount.find { it.region_name == "India" }
+                                    val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                                    val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                                    val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                                    textConfirmed.text = textConfirmedIndia
+                                    textRecovered.text = textRecoveredIndia
+                                    textDeceased.text = textDeceasedIndia
+                                }
                             }
-                        }
-                        statePresenter!!.getStates { stateSuccess, _ ->
-                            if (stateSuccess) {
-                                statePresenter?.setStateData(view)
-                                dataCountAdapterAdapter.notifyDataSetChanged()
+                            statePresenter!!.getStates { stateSuccess, _ ->
+                                if (stateSuccess) {
+                                    statePresenter?.setStateData(view)
+                                }
+                                dataCountAdapterAdapter?.notifyDataSetChanged()
                             }
+                            view.findViewById<PieChart>(R.id.pieChart).visibility = View.GONE
+                            view.findViewById<BarChart>(R.id.barChart).visibility = View.VISIBLE
+                            view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility =
+                                View.VISIBLE
+                        } else {
+                            dataCount.clear()
+                            dataCountAdapterAdapter?.notifyDataSetChanged()
+                            view.findViewById<TextView>(R.id.text_all_data).text = ""
+                            view.findViewById<BarChart>(R.id.barChart).visibility = View.INVISIBLE
+                            view.findViewById<PieChart>(R.id.pieChart).visibility = View.INVISIBLE
+                            showAlert()
                         }
                         toggleButtonValue = INDIA
-                        view.findViewById<PieChart>(R.id.pieChart).visibility = View.GONE
-                        view.findViewById<BarChart>(R.id.barChart).visibility = View.VISIBLE
-                        view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility =
-                            View.VISIBLE
-
                         view.findViewById<Button>(R.id.btnWorld).isClickable = true
                         view.findViewById<Button>(R.id.btnIndia).isClickable = false
                     }
                     R.id.btnWorld -> {
-                        countryPresenter!!.getCountries { countrySuccess ->
-                            if (countrySuccess) {
-                                countryPresenter?.setCountryData(view)
-                                dataCountAdapterAdapter.notifyDataSetChanged()
+
+                        if (CovidData.hasNetworkAvailable(context!!)) {
+                            countryPresenter!!.getCountries { countrySuccess ->
+                                if (countrySuccess) {
+                                    countryPresenter?.setCountryData(view)
+                                }
+                                dataCountAdapterAdapter?.notifyDataSetChanged()
                             }
+                            view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility =
+                                View.GONE
+                            view.findViewById<BarChart>(R.id.barChart).visibility = View.GONE
+                            view.findViewById<PieChart>(R.id.pieChart).visibility = View.VISIBLE
+                        } else {
+                            dataCount.clear()
+                            dataCountAdapterAdapter?.notifyDataSetChanged()
+                            view.findViewById<TextView>(R.id.text_all_data).text = ""
+                            view.findViewById<BarChart>(R.id.barChart).visibility = View.INVISIBLE
+                            view.findViewById<PieChart>(R.id.pieChart).visibility = View.INVISIBLE
+                            showAlert()
                         }
                         toggleButtonValue = WORLD
-                        view.findViewById<RadioGroup>(R.id.radioGroupDetail).visibility = View.GONE
-                        view.findViewById<BarChart>(R.id.barChart).visibility = View.GONE
-                        view.findViewById<PieChart>(R.id.pieChart).visibility = View.VISIBLE
-
                         view.findViewById<Button>(R.id.btnWorld).isClickable = false
                         view.findViewById<Button>(R.id.btnIndia).isClickable = true
                     }
@@ -157,9 +179,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     override fun setCountryData(view: View) {
-        textConfirmed.text = countryPresenter?.getConfirmedCount().toString()
-        textRecovered.text = countryPresenter?.getRecoveredCount().toString()
-        textDeceased.text = countryPresenter?.getDeceasedCount().toString()
+        val textConfirmedValue ="${countryPresenter?.getConfirmedCount().toString()} (+${countryPresenter?.getTodayConfirmedCount().toString()})"
+        val textRecoveredValue ="${countryPresenter?.getRecoveredCount().toString()} (+${countryPresenter?.getTodayRecoveredCount().toString()})"
+        val textDeceasedValue ="${countryPresenter?.getDeceasedCount().toString()} (+${countryPresenter?.getTodayDeceasedCount().toString()})"
+        textConfirmed.text = textConfirmedValue
+        textRecovered.text = textRecoveredValue
+        textDeceased.text = textDeceasedValue
 
         graphPresenter?.getPieChart(
             view, Count(
@@ -168,7 +193,10 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                 countryPresenter!!.getConfirmedCount(),
                 countryPresenter!!.getRecoveredCount(),
                 countryPresenter!!.getDeceasedCount(),
-                countryPresenter!!.getActiveCount()
+                countryPresenter!!.getActiveCount(),
+                countryPresenter!!.getTodayConfirmedCount(),
+                countryPresenter!!.getTodayRecoveredCount(),
+                countryPresenter!!.getTodayDeceasedCount()
             )
         )
         view.findViewById<TextView>(R.id.text_all_data).text =
@@ -208,6 +236,16 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         transaction?.replace(R.id.fragment_container, fragment)
         transaction?.addToBackStack(null)
         transaction?.commit()
+    }
+
+    private fun showAlert() {
+       MaterialAlertDialogBuilder(
+            activity,
+            R.style.AlertDialogCustom
+        )
+            .setTitle(getString(R.string.text_alert_internet))
+            .setPositiveButton("Ok", /* listener = */ null)
+            .show()
     }
 
 }

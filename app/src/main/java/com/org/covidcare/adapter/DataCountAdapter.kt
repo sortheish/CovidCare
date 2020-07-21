@@ -10,6 +10,7 @@ import com.org.covidcare.R
 import com.org.covidcare.model.Count
 import com.squareup.picasso.Picasso
 
+
 /**
  * Created by ishwari s on 6/23/2020.
  */

@@ -8,11 +8,15 @@ import android.os.Parcelable
  */
 class Count(
     val region_name: String?, val region_flag: String?, val cases_confirmed: Int,
-    val case_recovered: Int, val case_death: Int, val case_active: Int
+    val case_recovered: Int, val case_death: Int, val case_active: Int,
+    val todayCases: Int, val todayRecovered: Int, val todayDeaths: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),

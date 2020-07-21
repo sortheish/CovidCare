@@ -8,11 +8,12 @@
     <color name="app_dark_background">#153A4F</color>
     <color name="app_text_color">#F2F2F2</color>
     <color name="text_tab_change_color">#F2C94C</color>
-    <!--<color name="text_confirmed_value">#EB5757</color>-->
+   <!-- <color name="text_confirmed_value">#EB5757</color>-->
     <color name="text_confirmed_value">#FFA000</color>
     <color name="text_active_value">#EB5757</color>
     <color name="text_recovered_value">#27AE60</color>
     <color name="text_deceased_value">#000000</color>
+    <color name="alert_dialog_text_color">#688DA3</color>
     <color name="solid_spinner_color">#2D6B8D</color>
     <color name="solid_dialog_text_color">#688DA3</color>
     <color name="graph_layout_color">#CFD8DC</color>

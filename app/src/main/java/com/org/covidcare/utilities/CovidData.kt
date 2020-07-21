@@ -1,5 +1,7 @@
 package com.org.covidcare.utilities
 
+import android.content.Context
+import android.net.ConnectivityManager
 import com.org.covidcare.model.Count
 import com.org.covidcare.model.District
 import java.text.DateFormat
@@ -7,6 +9,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 /**
  * Created by ishwari s on 6/22/2020.
@@ -42,5 +45,12 @@ object CovidData {
             e.printStackTrace()
         }
         return outputDateStr
+    }
+
+     fun hasNetworkAvailable(context: Context): Boolean {
+        val service = Context.CONNECTIVITY_SERVICE
+        val manager = context.getSystemService(service) as ConnectivityManager?
+        val network = manager?.activeNetwork
+        return (network != null)
     }
 }

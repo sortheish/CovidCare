@@ -35,4 +35,6 @@
     <string name="text_self_assist">Self Assist</string>
     <string name="text_feed">Feed</string>
     <string name="text_desc_image_cybage">desc_image_cybage</string>
+    <string name="text_alert_internet">Check Internet Connection</string>
+    <string name="text_share_message">"I recommend Covid Care app to fight against COVID19. Please download and share it using this link.Android: https://play.google.com/store/</string>
 </resources>

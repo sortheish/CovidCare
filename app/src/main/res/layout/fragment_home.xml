@@ -81,14 +81,15 @@
                     android:id="@+id/text_confirmed_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="73dp"
                     android:layout_toEndOf="@+id/text_detail_state_name"
-                    android:drawableEnd="@drawable/ic_arrow_upward_white"
-                    android:drawableTint="@color/text_confirmed_value"
+                    android:singleLine="true"
                     android:fontFamily="@font/roboto"
                     android:text="@string/value_empty"
                     android:textColor="@color/text_confirmed_value"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:paddingStart="1dp"
+                    android:paddingEnd="1dp"/>
 
                 <TextView
                     android:id="@+id/text_recovered"
@@ -106,14 +107,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_detail_state_name"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="73dp"
                     android:layout_toEndOf="@+id/text_recovered"
-                    android:drawableEnd="@drawable/ic_arrow_upward_white"
-                    android:drawableTint="@color/text_recovered_value"
+                    android:singleLine="true"
                     android:fontFamily="@font/roboto"
                     android:text="@string/value_empty"
                     android:textColor="@color/text_recovered_value"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:paddingStart="1dp"
+                    android:paddingEnd="1dp"/>
 
                 <TextView
                     android:id="@+id/text_deceased"
@@ -130,14 +132,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_recovered"
-                    android:layout_marginStart="105dp"
+                    android:layout_marginStart="77dp"
                     android:layout_toEndOf="@+id/text_deceased"
-                    android:drawableEnd="@drawable/ic_arrow_upward_white"
-                    android:drawableTint="@color/text_deceased_value"
+                    android:singleLine="true"
                     android:fontFamily="@font/roboto"
                     android:text="@string/value_empty"
                     android:textColor="@color/text_deceased_value"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:paddingStart="1dp"
+                    android:paddingEnd="1dp"/>
             </RelativeLayout>
 
         </LinearLayout>
