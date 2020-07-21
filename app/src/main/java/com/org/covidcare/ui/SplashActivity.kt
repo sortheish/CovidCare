@@ -11,7 +11,7 @@ import com.org.covidcare.R
  * Created by ishwari s on 6/17/2020.
  */
 class SplashActivity : AppCompatActivity() {
-    private val splashTimeOut: Long = 3000 // 3 sec
+    private val splashTimeOut: Long = 2000 // 2 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

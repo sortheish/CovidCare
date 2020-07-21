@@ -2,7 +2,6 @@ package com.org.covidcare.utilities
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.util.Log
 import com.org.covidcare.model.Count
 import com.org.covidcare.model.District
 import java.text.DateFormat
@@ -51,9 +50,7 @@ object CovidData {
      fun hasNetworkAvailable(context: Context): Boolean {
         val service = Context.CONNECTIVITY_SERVICE
         val manager = context.getSystemService(service) as ConnectivityManager?
-        //val network = manager?.activeNetworkInfo
         val network = manager?.activeNetwork
-        Log.e("classTag", "hasNetworkAvailable: ${(network != null)}")
         return (network != null)
     }
 }

@@ -30,7 +30,7 @@ class StateModel : StateService.StateModel, CountService.CountModel {
                             val recovered = stateData.getInt(STATE_RECOVERED)
                             val deaths = stateData.getInt(STATE_DEATHS)
                             val active = cases - recovered - deaths
-                            val newState = Count(stateName, "", cases, recovered, deaths, active)
+                            val newState = Count(stateName, "", cases, recovered, deaths, active,0,0,0)
                             CovidData.dataCount.add(newState)
                         }
 
@@ -58,7 +58,7 @@ class StateModel : StateService.StateModel, CountService.CountModel {
                                 deaths += stateData.getInt(STATE_DEATHS)
                             }
                             active = cases - recovered - deaths
-                            val newState = Count(INDIA, "", cases, recovered, deaths, active)
+                            val newState = Count(INDIA, "", cases, recovered, deaths, active,0,0,0)
                             CovidData.graphCount.add(newState)
                         }
                         complete(true, INDIA)
@@ -103,7 +103,7 @@ class StateModel : StateService.StateModel, CountService.CountModel {
                                     val deaths = stateData.getInt(STATE_DEATHS)
                                     val active = cases - recovered - deaths
                                     val newState =
-                                        Count(state_name, "", cases, recovered, deaths, active)
+                                        Count(state_name, "", cases, recovered, deaths, active,0,0,0)
                                     CovidData.graphCount.add(newState)
                                 }
                             }

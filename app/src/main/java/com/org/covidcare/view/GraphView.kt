@@ -3,7 +3,6 @@ package com.org.covidcare.view
 import android.graphics.Color
 import android.view.View
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
@@ -11,8 +10,6 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.org.covidcare.R
 import com.org.covidcare.model.Count
 import com.org.covidcare.utilities.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_state_detail.view.*
 import kotlinx.android.synthetic.main.fragment_state_detail.view.pieChart
 
 /**
@@ -68,7 +65,7 @@ class GraphView:GraphService.GraphView {
         barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barChart.xAxis.valueFormatter = IndexAxisValueFormatter(CovidData.graphDate)
         barChart.invalidate()
-        barChart.animateY(5000)
+        barChart.animateY(2000)
     }
 
     override fun getPieChart(view: View,count:Count) {
@@ -95,7 +92,7 @@ class GraphView:GraphService.GraphView {
         view.pieChart.isDrawHoleEnabled = false
         view.pieChart.description.isEnabled = false
         view.pieChart.setDrawEntryLabels(false)
-        view.pieChart.animateY(4000)
+        view.pieChart.animateY(3000)
     }
 }
 

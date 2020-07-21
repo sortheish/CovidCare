@@ -20,4 +20,5 @@
     <string name="text_active">Active</string>
     <string name="text_image_desc">flag image of Country</string>
     <string name="text_alert_internet">Check Internet Connection</string>
+    <string name="text_share_message">"I recommend Covid Care app to fight against COVID19. Please download and share it using this link.Android: https://play.google.com/store/</string>
 </resources>

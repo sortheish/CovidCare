@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:textColor="@color/app_text_color"
         android:textSize="18sp"
@@ -122,11 +122,12 @@
 
     <ImageView
         android:id="@+id/imageViewFlag"
-        android:layout_width="45dp"
-        android:layout_height="30dp"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/text_image_desc"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/text_state_countries_name"
         app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
