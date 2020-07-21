@@ -61,9 +61,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         countryPresenter!!.getCountries { countrySuccess ->
             if (countrySuccess) {
                 val countIndia = dataCount.find { it.region_name == "India" }
-                textConfirmed.text = countIndia?.cases_confirmed.toString()
-                textRecovered.text = countIndia?.case_recovered.toString()
-                textDeceased.text = countIndia?.case_death.toString()
+                val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                textConfirmed.text = textConfirmedIndia
+                textRecovered.text = textRecoveredIndia
+                textDeceased.text = textDeceasedIndia
             }
         }
         statePresenter!!.getStates { stateSuccess, _ ->
@@ -82,9 +85,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                             countryPresenter!!.getCountries { countrySuccess ->
                                 if (countrySuccess) {
                                     val countIndia = dataCount.find { it.region_name == "India" }
-                                    textConfirmed.text = countIndia?.cases_confirmed.toString()
-                                    textRecovered.text = countIndia?.case_recovered.toString()
-                                    textDeceased.text = countIndia?.case_death.toString()
+                                    val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                                    val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                                    val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                                    textConfirmed.text = textConfirmedIndia
+                                    textRecovered.text = textRecoveredIndia
+                                    textDeceased.text = textDeceasedIndia
                                 }
                             }
                             statePresenter!!.getStates { stateSuccess, _ ->
@@ -173,9 +179,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     override fun setCountryData(view: View) {
-        textConfirmed.text = countryPresenter?.getConfirmedCount().toString()
-        textRecovered.text = countryPresenter?.getRecoveredCount().toString()
-        textDeceased.text = countryPresenter?.getDeceasedCount().toString()
+        val textConfirmedValue ="${countryPresenter?.getConfirmedCount().toString()} (+${countryPresenter?.getTodayConfirmedCount().toString()})"
+        val textRecoveredValue ="${countryPresenter?.getRecoveredCount().toString()} (+${countryPresenter?.getTodayRecoveredCount().toString()})"
+        val textDeceasedValue ="${countryPresenter?.getDeceasedCount().toString()} (+${countryPresenter?.getTodayDeceasedCount().toString()})"
+        textConfirmed.text = textConfirmedValue
+        textRecovered.text = textRecoveredValue
+        textDeceased.text = textDeceasedValue
 
         graphPresenter?.getPieChart(
             view, Count(
@@ -184,7 +193,10 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                 countryPresenter!!.getConfirmedCount(),
                 countryPresenter!!.getRecoveredCount(),
                 countryPresenter!!.getDeceasedCount(),
-                countryPresenter!!.getActiveCount()
+                countryPresenter!!.getActiveCount(),
+                countryPresenter!!.getTodayConfirmedCount(),
+                countryPresenter!!.getTodayRecoveredCount(),
+                countryPresenter!!.getTodayDeceasedCount()
             )
         )
         view.findViewById<TextView>(R.id.text_all_data).text =
