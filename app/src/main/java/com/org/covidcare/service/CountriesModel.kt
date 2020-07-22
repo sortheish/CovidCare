@@ -11,7 +11,7 @@ import org.json.JSONException
 /**
  * Created by ishwari s on 6/19/2020.
  */
-class CountriesModel : CountriesService.CountriesModel, CountService.CountModel {
+class CountriesModel : CountriesService.CountriesModel, CountService.CountModel, TodayCountService.TodayCountModel {
 
     override fun getCountries(complete: (Boolean) -> Unit) {
         val getCountries = object :
@@ -26,8 +26,11 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
                         val recovered = countries.getInt(COUNTRY_RECOVERED)
                         val deaths = countries.getInt(COUNTRY_DEATHS)
                         val active = countries.getInt(COUNTRY_ACTIVE)
+                        val casesToday: Int = countries.getInt(COUNTRY_TODAY_CASES)
+                        val recoveredToday = countries.getInt(COUNTRY_TODAY_RECOVERED)
+                        val deathsToday = countries.getInt(COUNTRY_TODAY_DEATHS)
                         val flag = countryFlag.getString(COUNTRY_flag)
-                        val newCountry = Count(country, flag, cases, recovered, deaths, active)
+                        val newCountry = Count(country, flag, cases, recovered, deaths, active,casesToday,recoveredToday,deathsToday)
                         CovidData.dataCount.add(newCountry)
                     }
                     complete(true)
@@ -82,5 +85,30 @@ class CountriesModel : CountriesService.CountriesModel, CountService.CountModel 
         return sum
     }
 
+    override fun getTodayConfirmedCount(): Int {
+        var sum = 0
+        for (x in 0 until CovidData.dataCount.size) {
+            sum += CovidData.dataCount[x].todayCases
+        }
+        return sum
+    }
+
+    override fun getTodayRecoveredCount(): Int {
+        var sum = 0
+        for (x in 0 until CovidData.dataCount.size) {
+            sum += CovidData.dataCount[x].todayRecovered
+        }
+        return sum
+    }
+
+    override fun getTodayDeceasedCount(): Int {
+        var sum = 0
+        for (x in 0 until CovidData.dataCount.size) {
+            sum += CovidData.dataCount[x].todayDeaths
+        }
+        return sum
+    }
+
 }
+
 
