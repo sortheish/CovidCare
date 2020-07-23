@@ -17,4 +17,8 @@
     <color name="solid_spinner_color">#2D6B8D</color>
     <color name="graph_layout_color">#CFD8DC</color>
     <color name="graph_gray_color">#303030</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 </resources>
