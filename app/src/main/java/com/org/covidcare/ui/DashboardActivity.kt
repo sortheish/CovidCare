@@ -36,10 +36,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     openFragment(GuideFragment.newInstance())
                     true
                 }
-                R.id.page_about -> {
+                /*R.id.page_about -> {
                     openFragment(AboutFragment.newInstance())
                     true
-                }
+                }*/
                 else -> false
             }
         }
