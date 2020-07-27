@@ -185,10 +185,10 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDos"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintVertical_bias="0.0">
 
             <RelativeLayout
                 android:id="@+id/guideline11"
@@ -236,9 +236,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/image_rounded_corner"
                     android:contentDescription="@string/desc_image_hand_wash"
-                    android:src="@drawable/handwash"
-                    android:background="@drawable/image_rounded_corner"/>
+                    android:src="@drawable/handwash" />
 
                 <!--  <View
                 android:id="@+id/separator11"
@@ -261,8 +261,8 @@
                     android:id="@+id/heading12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_toEndOf="@+id/thumb12"
                     android:ellipsize="end"
@@ -296,9 +296,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/image_rounded_corner"
                     android:contentDescription="@string/desc_image_cover_nose"
-                    android:src="@drawable/mask"
-                    android:background="@drawable/image_rounded_corner"/>
+                    android:src="@drawable/mask" />
 
                 <!--<View
                 android:id="@+id/separator12"
@@ -323,8 +323,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="16dp"
-                    android:layout_toStartOf="@+id/thumb13"
                     android:layout_marginTop="8dp"
+                    android:layout_toStartOf="@+id/thumb13"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/text_consult_a_doctor_if_sick"
@@ -356,9 +356,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/image_rounded_corner"
                     android:contentDescription="@string/desc_image_consult_doctor"
-                    android:src="@drawable/doctor"
-                    android:background="@drawable/image_rounded_corner"/>
+                    android:src="@drawable/doctor" />
 
                 <!-- <View
                 android:id="@+id/separator13"
@@ -381,8 +381,8 @@
                     android:id="@+id/heading14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_toEndOf="@+id/thumb14"
                     android:ellipsize="end"
@@ -416,9 +416,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/image_rounded_corner"
                     android:contentDescription="@string/desc_image_stay_indoor"
-                    android:src="@drawable/stayhome"
-                    android:background="@drawable/image_rounded_corner"/>
+                    android:src="@drawable/stayhome" />
 
                 <!--<View
                 android:id="@+id/separator14"
@@ -464,10 +464,10 @@
             android:background="@color/app_background"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDoNot"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintVertical_bias="0.0">
 
             <RelativeLayout
                 android:id="@+id/guideline21"
@@ -515,9 +515,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/coverface"
                     android:background="@drawable/image_rounded_corner"
-                    android:contentDescription="@string/desc_image_donot_touch_face" />
+                    android:contentDescription="@string/desc_image_donot_touch_face"
+                    android:src="@drawable/coverface" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -531,8 +531,8 @@
                     android:id="@+id/heading22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   android:layout_marginTop="8dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_toEndOf="@+id/thumb22"
                     android:ellipsize="end"
@@ -566,9 +566,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/handshake"
                     android:background="@drawable/image_rounded_corner"
-                    android:contentDescription="@string/desc_image_hand_shake" />
+                    android:contentDescription="@string/desc_image_hand_shake"
+                    android:src="@drawable/handshake" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -582,9 +582,9 @@
                     android:id="@+id/heading23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toStartOf="@+id/thumb23"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -617,9 +617,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/spit"
                     android:background="@drawable/image_rounded_corner"
-                    android:contentDescription="@string/desc_image_donot_spite" />
+                    android:contentDescription="@string/desc_image_donot_spite"
+                    android:src="@drawable/spit" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -633,8 +633,8 @@
                     android:id="@+id/heading24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_toEndOf="@+id/thumb24"
                     android:ellipsize="end"
@@ -668,11 +668,53 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/corona"
                     android:background="@drawable/image_rounded_corner"
-                    android:contentDescription="@string/desc_image_corona" />
+                    android:contentDescription="@string/desc_image_corona"
+                    android:src="@drawable/corona" />
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+        <Button
+            android:id="@+id/btnGuidelines"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/text_guidelines"
+            android:textColor="@color/app_text_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+        <TextView
+            android:id="@+id/textViewGuidelines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:lineSpacingExtra="3dp"
+            android:padding="16dp"
+            android:text="@string/stay_safe"
+            android:textColor="@color/app_text_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGuidelines" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
