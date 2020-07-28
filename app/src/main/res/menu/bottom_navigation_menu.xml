@@ -10,6 +10,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_guide"
         android:title="@string/tab_guide" />
+
     <item
         android:id="@+id/page_about"
         android:enabled="true"
