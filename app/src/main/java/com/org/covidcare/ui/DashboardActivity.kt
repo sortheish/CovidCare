@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.org.covidcare.R
+import com.org.covidcare.utilities.App
 import kotlinx.android.synthetic.main.activity_dashboard.*
-
 
 /**
  * Created by ishwari s on 6/16/2020.
@@ -37,7 +37,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     true
                 }
                 R.id.page_about -> {
-                    openFragment(AboutFragment.newInstance())
+                    if (App.prefs.isLoggedIn) {
+                        val name: String? = App.prefs.userName
+                        item.title = getString(R.string.tab_cybage)
+                        openFragment(WelcomeFragment.newInstance(name))
+                    } else {
+                        item.title = getString(R.string.tab_about)
+                        openFragment(AboutFragment.newInstance())
+                    }
                     true
                 }
                 else -> false
@@ -65,5 +72,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    override fun onBackPressed() {
+        val homeItem: MenuItem = bottom_navigation.menu.getItem(0)
+        bottom_navigation.selectedItemId = homeItem.itemId
+    }
+
 }
 

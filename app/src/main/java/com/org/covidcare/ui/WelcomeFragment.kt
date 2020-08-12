@@ -1,32 +1,35 @@
 package com.org.covidcare.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.org.covidcare.R
+import com.org.covidcare.utilities.CovidData
+import kotlinx.android.synthetic.main.fragment_welcome.view.*
 
 /**
  * Created by ishwari s on 7/9/2020.
  */
-private const val ARG_PARAM1 = "param1"
+private const val USER_NAME = "userName"
 
-class WelcomeFragment : Fragment() {
-    private var param1: String? = null
+class WelcomeFragment : Fragment(),View.OnClickListener {
+    private var userName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            userName = it.getString(USER_NAME)
         }
     }
 
     companion object {
-        fun newInstance(param1: String) =
+        fun newInstance(value: String?) =
             WelcomeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putString(USER_NAME, value)
                 }
             }
     }
@@ -35,8 +38,34 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome, container, false)
+
+        val view = inflater.inflate(
+            R.layout.fragment_welcome, container,
+            false
+        )
+        view.text_user_name.text = userName
+        view.btn_logout.setOnClickListener(this)
+        return view
     }
 
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_logout -> {
+                FirebaseAuth.getInstance().signOut()
+                openFragment(AboutFragment.newInstance())
+                closeFragment()
+                CovidData.logout()
+            }
+        }
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragment_container, fragment)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+    }
+    private fun closeFragment() {
+        activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+    }
 }

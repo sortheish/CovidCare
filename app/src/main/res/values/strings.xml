@@ -3,6 +3,7 @@
     <string name="tab_home">Home</string>
     <string name="tab_guide">Guide</string>
     <string name="tab_about">About</string>
+    <string name="tab_cybage">Cybage</string>
     <string name="desc_icon_share">icon_share</string>
     <string name="desc_app_icon">appIcon</string>
     <string name="text_confirmed">Confirmed</string>
@@ -19,14 +20,14 @@
     <string name="value_empty">--</string>
     <string name="text_active">Active</string>
     <string name="text_image_desc">flag image of Country</string>
-    <string name="text_login_with_Cybage">Login With Cybage Email </string>
+    <string name="text_login_with_number">Login With Phone Number</string>
     <string name="text_more_feature">For More Features</string>
     <string name="text_desc_about">desc_about</string>
     <string name="text_desc_header">desc_header</string>
     <string name="text_signin">Sign In</string>
     <string name="text_login">Login</string>
-    <string name="text_email">Email</string>
-    <string name="text_password">Password</string>
+    <string name="text_phone_number">Phone Number</string>
+    <string name="text_otp">OTP</string>
     <string name="text_cancel">Cancel</string>
     <string name="text_go">GO</string>
     <string name="text_welcome">Welcome</string>
@@ -79,4 +80,18 @@
         \n\n• Your positive mood will help protect your immune system, while negative thoughts have been shown to depress your immune system and make it weak against viruses.
         \n\n• Most importantly, firmly believe that this shall also pass and we will be safe.... !
         \n\n\nStay mentally positive...Stay safe!</string>
+    <string name="text_verify">Verify</string>
+    <string name="generate_otp">Generate OTP</string>
+    <string name="call_for_enter_otp">Please enter otp</string>
+    <string name="call_for_proper_mobile_number">Please enter valid mobile number</string>
+    <string name="call_for_user_name">Please enter user name</string>
+    <string name="verification_failed">Something went wrong</string>
+    <string name="firebase_invalid_request">Invalid Request</string>
+    <string name="firebase_request_failed">Request Failed</string>
+    <string name="firebase_SMS_Quota">The SMS quota for the project has been exceeded</string>
+    <string name="please_enter_mobile_number_to_n_receive_a_verification_code">Please enter mobile number to \n receive a verification code.</string>
+    <string name="text_otp_verification">OTP has been sent to your \n mobile number.Please enter it.</string>
+    <string name="text_hint_name">Name</string>
+    <string name="btn_text_resend">Resend</string>
+    <string name="hint_mobile_number">Mobile Number</string>
 </resources>

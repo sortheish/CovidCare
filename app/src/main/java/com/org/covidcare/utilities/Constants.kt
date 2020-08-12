@@ -30,8 +30,12 @@ const val STATE_DATA = "data"
 const val STATE_DAY_DATA = "day"
 const val STATE_REGIONAL_DATA = "regional"
 
-
 const val DISTRICT_DATA = "districtData"
 const val DISTRICT_CASES = "confirmed"
 const val DISTRICT_RECOVERED = "recovered"
 const val DISTRICT_DEATHS = "deceased"
+
+const val REG_NUMBER = "^[7-9][0-9]{9}\$"
+const val IS_LOGGED_IN = "isLoggedIn"
+const val USER_NAME = "userName"
+const val USER_MOBILE_NUMBER = "userMobileNumber"

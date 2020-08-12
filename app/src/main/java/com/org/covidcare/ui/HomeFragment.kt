@@ -157,14 +157,15 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     private fun setUpAdapter(dataCount: ArrayList<Count>) {
-        dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
-            if (toggleButtonValue.equals(INDIA)) {
-                openFragment(StateDetailFragment.newInstance(data_value))
+            dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
+                if (toggleButtonValue.equals(INDIA)) {
+                    openFragment(StateDetailFragment.newInstance(data_value))
+                }
             }
-        }
-        val layoutManager = LinearLayoutManager(activity)
-        list_of_data.layoutManager = layoutManager
-        list_of_data.adapter = dataCountAdapterAdapter
+            val layoutManager = LinearLayoutManager(activity)
+            list_of_data.layoutManager = layoutManager
+            list_of_data.adapter = dataCountAdapterAdapter
+
     }
 
     private fun init(view: View) {
