@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -19,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.org.covidcare.R
+import com.org.covidcare.presenter.NotificationInfoPresenter
+import com.org.covidcare.service.NotificationInfoService
 import com.org.covidcare.utilities.App
 import com.org.covidcare.utilities.CovidData.isValidPhone
 import com.org.covidcare.view.AboutService
@@ -28,9 +31,11 @@ import kotlinx.android.synthetic.main.login_dialog_layout.*
 /**
  * Created by ishwari s on 6/17/2020.
  */
-class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
+class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
+    NotificationInfoService.NotificationInfoView {
     private lateinit var dialog: Dialog
     private var aboutPresenter: AboutServicePresenter? = null
+    private var notificationInfoPresenter: NotificationInfoPresenter? = null
     private lateinit var auth: FirebaseAuth
     lateinit var verificationCode: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -49,6 +54,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
             false
         )
         aboutPresenter = AboutServicePresenter(this)
+        notificationInfoPresenter = NotificationInfoPresenter(this)
         view.findViewById<Button>(R.id.btn_sign_in).setOnClickListener(this)
         return view
     }
@@ -71,21 +77,29 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
                 }
             }
             R.id.btn_dialog_verify -> {
+                Log.e("Button", "Click")
                 if (dialog.text_user_name.text.toString().isNotEmpty()) {
                     if (isValidPhone(dialog.editTextNumber.text.toString())) {
-                        dialog.btn_dialog_verify.alpha = 0.5f
-                        dialog.btn_dialog_verify.isEnabled = false
-                        dialog.btn_dialog_resend.alpha = 1.0f
-                        dialog.btn_dialog_resend.isEnabled = true
-                        dialog.text_user_name.isEnabled = false
-                        dialog.editTextNumber.isEnabled = false
-                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            "+91" + dialog.editTextNumber.text.toString(),
-                            60,
-                            java.util.concurrent.TimeUnit.SECONDS,
-                            activity!!,
-                            mCallbacks
-                        )
+                        notificationInfoPresenter?.isPhoneNumberValidate(dialog.editTextNumber.text.toString()) { isRegister ->
+                            if (isRegister) {
+                                dialog.textViewError.visibility = GONE
+                                dialog.btn_dialog_verify.alpha = 0.5f
+                                dialog.btn_dialog_verify.isEnabled = false
+                                dialog.btn_dialog_resend.alpha = 1.0f
+                                dialog.btn_dialog_resend.isEnabled = true
+                                dialog.text_user_name.isEnabled = false
+                                dialog.editTextNumber.isEnabled = false
+                                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                    "+91" + dialog.editTextNumber.text.toString(),
+                                    60,
+                                    java.util.concurrent.TimeUnit.SECONDS,
+                                    activity!!,
+                                    mCallbacks
+                                )
+                            } else {
+                                dialog.textViewError.visibility = View.VISIBLE
+                            }
+                        }
                     } else {
                         Toast.makeText(
                             activity,
@@ -197,6 +211,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
                 super.onCodeSent(verificationId, token)
                 verificationCode = verificationId
                 resendToken = token
+
                 dialog.editTextNumber.visibility = GONE
                 dialog.textViewDialog.text = getString(R.string.text_otp_verification)
                 dialog.text_user_name.visibility = GONE
@@ -212,6 +227,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
         auth.signInWithCredential(credential).addOnCompleteListener(activity!!) { task ->
             if (task.isSuccessful) {
                 App.prefs.isLoggedIn = true
+                notificationInfoPresenter?.updateLoginStatus()
                 App.prefs.userMobileNumber = dialog.editTextNumber.text.toString()
                 App.prefs.userName = dialog.text_user_name.text.toString()
                 openFragment(WelcomeFragment.newInstance(dialog.text_user_name.text.toString()))
@@ -240,5 +256,9 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener {
             }
             dialog.dismiss()
         }
+    }
+
+    override fun setNotificationDetailsData(view: View) {
+        TODO("Not yet implemented")
     }
 }

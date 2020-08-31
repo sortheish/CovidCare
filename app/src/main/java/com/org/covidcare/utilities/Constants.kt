@@ -8,6 +8,9 @@ const val  COUNTRIES_URL = "https://disease.sh/v2/countries?yesterday=true&sort=
 const val  STATE_URL = "https://api.rootnet.in/covid19-in/stats/history"
 const val  DISTRICT_URL = "https://api.covid19india.org/state_district_wise.json"
 
+const val FIREBASE_PHOTO_BASE_URL = "https://firebasestorage.googleapis.com/v0/b/covidcare-3474d.appspot.com/o/covidcare%2F"
+const val FIREBASE_PHOTO_END_URL = "?alt=media"
+
 const val INDIA = "India"
 const val WORLD = "World"
 
@@ -39,3 +42,18 @@ const val REG_NUMBER = "^[7-9][0-9]{9}\$"
 const val IS_LOGGED_IN = "isLoggedIn"
 const val USER_NAME = "userName"
 const val USER_MOBILE_NUMBER = "userMobileNumber"
+const val UNIQUE_ID = "uniqueID"
+
+const val FIREBASE_CONTENT = "content"
+const val FIREBASE_DATE = "date"
+const val FIREBASE_LINK = "link"
+const val FIREBASE_PHOTO = "photo"
+const val FIREBASE_SUBJECT = "subject"
+const val FIREBASE_TITLE = "title"
+const val FIREBASE_NEWSID = "newsId"
+const val FIREBASE_IS_LOGGED_IN = "is_loggedin"
+const val FIREBASE_FCM_TOKEN = "fcm_token"
+const val DEVICE_ID = "device_id"
+const val FIREBASE_DATABASE_COVID_CARE = "covid_care"
+const val FIREBASE_DATABASE_REGI_USER = "registered_users"
+const val FIREBASE_DATABASE_APP_USERS ="app_users"

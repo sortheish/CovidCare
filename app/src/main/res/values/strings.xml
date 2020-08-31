@@ -31,7 +31,7 @@
     <string name="text_cancel">Cancel</string>
     <string name="text_go">GO</string>
     <string name="text_welcome">Welcome</string>
-    <string name="text_logout">Logout</string>
+    <string name="text_logout">Log Out</string>
     <string name="text_help_line">Help Line</string>
     <string name="text_self_assist">Self Assist</string>
     <string name="text_feed">Feed</string>
@@ -94,4 +94,20 @@
     <string name="text_hint_name">Name</string>
     <string name="btn_text_resend">Resend</string>
     <string name="hint_mobile_number">Mobile Number</string>
+    <string name="not_registered_number">Number not registered with Cybage</string>
+    <string name="firebase_application_id">"1:819897549222:android:2a661a39af938304140f67"</string>
+    <string name="desc_content_desc">imageContentDesc</string>
+    <string name="text_link">Link:</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_sample">SampleActivity</string>
+    <string name="notification_intent_extra_name">notificationDetailsFragment</string>
+    <string name="notification_data_id">notification_data_id</string>
+    <string name="notification_intent_extra_value">notificationMenuItem</string>
+    <string name="notification_channel_id">CovidCareChannel_01</string>
+    <string name="notification_channel_name">name</string>
 </resources>

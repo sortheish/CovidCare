@@ -9,20 +9,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.org.covidcare.R
-import com.org.covidcare.utilities.App
+import com.org.covidcare.presenter.NotificationInfoPresenter
+import com.org.covidcare.service.NotificationInfoService
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 /**
  * Created by ishwari s on 6/16/2020.
  */
-class DashboardActivity : AppCompatActivity(), View.OnClickListener {
+class DashboardActivity : AppCompatActivity(), View.OnClickListener,
+    NotificationInfoService.NotificationInfoView {
+    private var notificationInfoPresenter: NotificationInfoPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         findViewById<ImageButton>(R.id.btnShareApp).setOnClickListener(this)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        openFragment(HomeFragment.newInstance())
+        notificationInfoPresenter = NotificationInfoPresenter(this)
+        notificationInfoPresenter?.setNotificationDetailsData(bottom_navigation)
     }
 
     private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
@@ -37,14 +41,15 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     true
                 }
                 R.id.page_about -> {
-                    if (App.prefs.isLoggedIn) {
-                        val name: String? = App.prefs.userName
-                        item.title = getString(R.string.tab_cybage)
-                        openFragment(WelcomeFragment.newInstance(name))
-                    } else {
-                        item.title = getString(R.string.tab_about)
-                        openFragment(AboutFragment.newInstance())
-                    }
+                    openFragment(WelcomeFragment())
+                    /* if (App.prefs.isLoggedIn) {
+                         val name: String? = App.prefs.userName
+                         item.title = getString(R.string.tab_cybage)
+                         openFragment(WelcomeFragment.newInstance(name))
+                     } else {
+                         item.title = getString(R.string.tab_about)
+                         openFragment(AboutFragment.newInstance())
+                     }*/
                     true
                 }
                 else -> false
@@ -78,5 +83,17 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         bottom_navigation.selectedItemId = homeItem.itemId
     }
 
+    override fun setNotificationDetailsData(view: View) {
+        val menuFragment = intent.getStringExtra(getString(R.string.notification_intent_extra_name))
+        if (menuFragment != null) {
+            if (menuFragment == getString(R.string.notification_intent_extra_value)) {
+                notificationInfoPresenter?.getDataFromServer(intent.getStringExtra(getString(R.string.notification_channel_id))) { notificationInfoData ->
+                    openFragment(NotificationDetailsFragment.newInstance(notificationInfoData))
+                }
+            }
+        } else {
+            openFragment(HomeFragment.newInstance())
+        }
+    }
 }
 

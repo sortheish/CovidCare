@@ -61,9 +61,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         countryPresenter!!.getCountries { countrySuccess ->
             if (countrySuccess) {
                 val countIndia = dataCount.find { it.region_name == "India" }
-                val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
-                val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
-                val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                val textConfirmedIndia =
+                    "${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                val textRecoveredIndia =
+                    "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                val textDeceasedIndia =
+                    "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
                 textConfirmed.text = textConfirmedIndia
                 textRecovered.text = textRecoveredIndia
                 textDeceased.text = textDeceasedIndia
@@ -85,9 +88,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
                             countryPresenter!!.getCountries { countrySuccess ->
                                 if (countrySuccess) {
                                     val countIndia = dataCount.find { it.region_name == "India" }
-                                    val textConfirmedIndia ="${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
-                                    val textRecoveredIndia = "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
-                                    val textDeceasedIndia = "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
+                                    val textConfirmedIndia =
+                                        "${countIndia?.cases_confirmed.toString()} (+${countIndia?.todayCases.toString()})"
+                                    val textRecoveredIndia =
+                                        "${countIndia?.case_recovered.toString()} (+${countIndia?.todayRecovered.toString()})"
+                                    val textDeceasedIndia =
+                                        "${countIndia?.case_death.toString()} (+${countIndia?.todayDeaths.toString()})"
                                     textConfirmed.text = textConfirmedIndia
                                     textRecovered.text = textRecoveredIndia
                                     textDeceased.text = textDeceasedIndia
@@ -157,14 +163,14 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     private fun setUpAdapter(dataCount: ArrayList<Count>) {
-            dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
-                if (toggleButtonValue.equals(INDIA)) {
-                    openFragment(StateDetailFragment.newInstance(data_value))
-                }
+        dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
+            if (toggleButtonValue.equals(INDIA)) {
+                openFragment(StateDetailFragment.newInstance(data_value))
             }
-            val layoutManager = LinearLayoutManager(activity)
-            list_of_data.layoutManager = layoutManager
-            list_of_data.adapter = dataCountAdapterAdapter
+        }
+        val layoutManager = LinearLayoutManager(activity)
+        list_of_data.layoutManager = layoutManager
+        list_of_data.adapter = dataCountAdapterAdapter
 
     }
 
@@ -180,9 +186,12 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     override fun setCountryData(view: View) {
-        val textConfirmedValue ="${countryPresenter?.getConfirmedCount().toString()} (+${countryPresenter?.getTodayConfirmedCount().toString()})"
-        val textRecoveredValue ="${countryPresenter?.getRecoveredCount().toString()} (+${countryPresenter?.getTodayRecoveredCount().toString()})"
-        val textDeceasedValue ="${countryPresenter?.getDeceasedCount().toString()} (+${countryPresenter?.getTodayDeceasedCount().toString()})"
+        val textConfirmedValue = "${countryPresenter?.getConfirmedCount()
+            .toString()} (+${countryPresenter?.getTodayConfirmedCount().toString()})"
+        val textRecoveredValue = "${countryPresenter?.getRecoveredCount()
+            .toString()} (+${countryPresenter?.getTodayRecoveredCount().toString()})"
+        val textDeceasedValue = "${countryPresenter?.getDeceasedCount()
+            .toString()} (+${countryPresenter?.getTodayDeceasedCount().toString()})"
         textConfirmed.text = textConfirmedValue
         textRecovered.text = textRecoveredValue
         textDeceased.text = textDeceasedValue
@@ -240,14 +249,13 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     }
 
     private fun showAlert() {
-       MaterialAlertDialogBuilder(
-            activity,
+        MaterialAlertDialogBuilder(
+            context!!,
             R.style.AlertDialogCustom
         )
             .setTitle(getString(R.string.text_alert_internet))
             .setPositiveButton("Ok", /* listener = */ null)
             .show()
     }
-
 }
 
