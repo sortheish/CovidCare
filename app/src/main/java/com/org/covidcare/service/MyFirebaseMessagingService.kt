@@ -77,7 +77,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
         val notification: Notification =
             Notification.Builder(this, getString(R.string.notification_channel_id))
-                .setSmallIcon(R.drawable.ic_about)
+                .setSmallIcon(R.drawable.masks_white)
                 .setColor(getColor(R.color.text_tab_change_color))
                 .setContentTitle(title)
                 .setContentText(body)

@@ -169,7 +169,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
 
     private fun openFragment(fragment: Fragment) {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        transaction?.replace(R.id.fragment_container, fragment)
+        transaction?.replace(R.id.fragment_container, fragment,null)
         transaction?.addToBackStack(null)
         transaction?.commit()
     }
@@ -213,7 +213,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
                 resendToken = token
 
                 dialog.editTextNumber.visibility = GONE
-                dialog.textViewDialog.text = getString(R.string.text_otp_verification)
+               // dialog.textViewDialog.text = getString(R.string.text_otp_verification)
                 dialog.text_user_name.visibility = GONE
                 dialog.btn_dialog_verify.visibility = GONE
                 dialog.btn_dialog_resend.visibility = GONE

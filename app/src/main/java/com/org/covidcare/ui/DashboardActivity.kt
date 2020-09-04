@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.org.covidcare.R
 import com.org.covidcare.presenter.NotificationInfoPresenter
 import com.org.covidcare.service.NotificationInfoService
+import com.org.covidcare.utilities.App
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 /**
@@ -24,32 +25,30 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         findViewById<ImageButton>(R.id.btnShareApp).setOnClickListener(this)
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         notificationInfoPresenter = NotificationInfoPresenter(this)
-        notificationInfoPresenter?.setNotificationDetailsData(bottom_navigation)
+        notificationInfoPresenter?.setNotificationDetailsData(fragment_container)
+        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
             return@OnNavigationItemSelectedListener when (item.itemId) {
-                R.id.page_home -> {
-                    openFragment(HomeFragment.newInstance())
+                R.id.page_about -> {
+                   // openFragment(WelcomeFragment())
+                     if (App.prefs.isLoggedIn) {
+                         val name: String? = App.prefs.userName
+                         openFragment(WelcomeFragment.newInstance(name))
+                     } else {
+                         openFragment(AboutFragment.newInstance())
+                     }
                     true
                 }
                 R.id.page_guide -> {
                     openFragment(GuideFragment.newInstance())
                     true
                 }
-                R.id.page_about -> {
-                    openFragment(WelcomeFragment())
-                    /* if (App.prefs.isLoggedIn) {
-                         val name: String? = App.prefs.userName
-                         item.title = getString(R.string.tab_cybage)
-                         openFragment(WelcomeFragment.newInstance(name))
-                     } else {
-                         item.title = getString(R.string.tab_about)
-                         openFragment(AboutFragment.newInstance())
-                     }*/
+                R.id.page_home -> {
+                    openFragment(HomeFragment.newInstance())
                     true
                 }
                 else -> false
@@ -59,6 +58,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener,
     private fun openFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
+        //transaction.add(R.id.fragment_container, fragment, "tag1")
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -79,8 +79,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun onBackPressed() {
-        val homeItem: MenuItem = bottom_navigation.menu.getItem(0)
-        bottom_navigation.selectedItemId = homeItem.itemId
+        super.onBackPressed()
+        /*val homeItem: MenuItem = bottom_navigation.menu.getItem(0)
+        bottom_navigation.selectedItemId = homeItem.itemId*/
+
     }
 
     override fun setNotificationDetailsData(view: View) {
@@ -90,9 +92,15 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener,
                 notificationInfoPresenter?.getDataFromServer(intent.getStringExtra(getString(R.string.notification_channel_id))) { notificationInfoData ->
                     openFragment(NotificationDetailsFragment.newInstance(notificationInfoData))
                 }
-            }
+           }
         } else {
-            openFragment(HomeFragment.newInstance())
+           // openFragment(WelcomeFragment())
+             if (App.prefs.isLoggedIn) {
+                 val name: String? = App.prefs.userName
+                 openFragment(WelcomeFragment.newInstance(name))
+             } else {
+                 openFragment(AboutFragment.newInstance())
+             }
         }
     }
 }

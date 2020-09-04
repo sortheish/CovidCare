@@ -1,9 +1,11 @@
 package com.org.covidcare.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.org.covidcare.R
@@ -46,6 +48,7 @@ class WelcomeFragment : Fragment(),View.OnClickListener,NotificationInfoService.
             R.layout.fragment_welcome, container,
             false
         )
+
         notificationInfoPresenter = NotificationInfoPresenter(this)
         view.text_user_name.text = userName
         view.btn_logout.setOnClickListener(this)
@@ -80,5 +83,14 @@ class WelcomeFragment : Fragment(),View.OnClickListener,NotificationInfoService.
 
     override fun setNotificationDetailsData(view: View) {
         TODO("Not yet implemented")
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 }

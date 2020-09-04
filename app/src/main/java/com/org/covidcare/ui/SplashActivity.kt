@@ -20,7 +20,8 @@ class SplashActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_splash)
         val notifyIntent = Intent(this, DashboardActivity::class.java)
-        if (intent.extras != null) {
+       // if (intent.extras != null) {
+        if(intent.extras?.get(FIREBASE_NEWSID) != null){
             notifyIntent.putExtra(
                 getString(R.string.notification_intent_extra_name),
                 getString(R.string.notification_intent_extra_value)
@@ -34,7 +35,5 @@ class SplashActivity : AppCompatActivity() {
             startActivity(notifyIntent)
             finish()
         }, splashTimeOut)
-
     }
-
 }

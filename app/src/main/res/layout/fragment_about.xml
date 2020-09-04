@@ -39,7 +39,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="42dp"
         android:gravity="center"
-        android:text="@string/text_login_with_number"
         android:textColor="@color/app_text_color"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
