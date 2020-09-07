@@ -8,6 +8,8 @@
     <color name="app_dark_background">#153A4F</color>
     <color name="app_text_color">#F2F2F2</color>
     <color name="text_tab_change_color">#F2C94C</color>
+    <color name="notification_color">#717d13</color>
+
    <!-- <color name="text_confirmed_value">#EB5757</color>-->
     <color name="text_confirmed_value">#FFA000</color>
     <color name="text_active_value">#EB5757</color>

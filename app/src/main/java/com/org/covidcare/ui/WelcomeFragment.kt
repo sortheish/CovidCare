@@ -3,15 +3,19 @@ package com.org.covidcare.ui
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.org.covidcare.R
+import com.org.covidcare.presenter.NotificationInfoPresenter
+import com.org.covidcare.service.NotificationInfoService
 import com.org.covidcare.utilities.CovidData
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
 import kotlinx.android.synthetic.main.login_dialog_layout.*
@@ -20,10 +24,12 @@ import kotlinx.android.synthetic.main.login_dialog_layout.*
  * Created by ishwari s on 7/9/2020.
  */
 private const val USER_NAME = "userName"
+  
+class WelcomeFragment : Fragment(),View.OnClickListener,NotificationInfoService.NotificationInfoView {
+private lateinit var dialog: Dialog
 
-class WelcomeFragment : Fragment(), View.OnClickListener {
-    private lateinit var dialog: Dialog
     private var userName: String? = null
+    private var notificationInfoPresenter: NotificationInfoPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,9 +56,12 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
             R.layout.fragment_welcome, container,
             false
         )
+
+        notificationInfoPresenter = NotificationInfoPresenter(this)
         view.text_user_name.text = userName
         view.btn_logout.setOnClickListener(this)
         view.btn_help_line.setOnClickListener(this)
+        view.btn_feed.setOnClickListener(this)
         return view
     }
 
@@ -63,6 +72,10 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
                 openFragment(AboutFragment.newInstance())
                 closeFragment()
                 CovidData.logout()
+                notificationInfoPresenter?.updateLoginStatus()
+            }
+            R.id.btn_feed -> {
+                openFragment(NotificationFragment.newInstance())
             }
 
             R.id.btn_help_line -> {
@@ -94,6 +107,7 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
         activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
     }
 
+
     private fun showDialog(view: View) {
         dialog = Dialog(view.context)
         dialog.setCancelable(true)
@@ -104,5 +118,17 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
         dialogView.findViewById<Button>(R.id.btn_just_call).setOnClickListener(this)
         dialogView.findViewById<Button>(R.id.btn_drop_query).setOnClickListener(this)
         dialog.show()
+
+    override fun setNotificationDetailsData(view: View) {
+        TODO("Not yet implemented")
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 }
