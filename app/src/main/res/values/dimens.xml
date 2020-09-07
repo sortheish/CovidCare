@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="query_page_common_gap">20dp</dimen>
     <!--
     Because the window insets on round devices are larger than 15dp, this padding only applies
     to square screens.

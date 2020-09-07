@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:background="@drawable/dialog_rounded_layout"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textView_helplines"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="Helplines"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_just_call"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="Just a call"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_drop_query"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="Drop a query"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</LinearLayout>
