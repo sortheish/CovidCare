@@ -76,8 +76,8 @@ class WelcomeFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.btn_drop_query -> {
-                Toast.makeText(v.context, "Drop a query - Work in progress", Toast.LENGTH_SHORT).show()
-                //openFragment(QueryFragment.newInstance())
+                //Toast.makeText(v.context, "Drop a query", Toast.LENGTH_SHORT).show()
+                openFragment(QueryFragment.newInstance())
                 dialog.dismiss()
             }
         }
