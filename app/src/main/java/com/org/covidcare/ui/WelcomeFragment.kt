@@ -1,5 +1,6 @@
 package com.org.covidcare.ui
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -18,15 +19,15 @@ import com.org.covidcare.presenter.NotificationInfoPresenter
 import com.org.covidcare.service.NotificationInfoService
 import com.org.covidcare.utilities.CovidData
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
-import kotlinx.android.synthetic.main.login_dialog_layout.*
 
 /**
  * Created by ishwari s on 7/9/2020.
  */
 private const val USER_NAME = "userName"
-  
-class WelcomeFragment : Fragment(),View.OnClickListener,NotificationInfoService.NotificationInfoView {
-private lateinit var dialog: Dialog
+
+class WelcomeFragment : Fragment(), View.OnClickListener,
+    NotificationInfoService.NotificationInfoView {
+    private lateinit var dialog: Dialog
 
     private var userName: String? = null
     private var notificationInfoPresenter: NotificationInfoPresenter? = null
@@ -79,7 +80,7 @@ private lateinit var dialog: Dialog
             }
 
             R.id.btn_help_line -> {
-                showDialog(v);
+                showDialog(v)
             }
 
             R.id.btn_just_call -> {
@@ -89,7 +90,8 @@ private lateinit var dialog: Dialog
             }
 
             R.id.btn_drop_query -> {
-                Toast.makeText(v.context, "Drop a query - Work in progress", Toast.LENGTH_SHORT).show()
+                Toast.makeText(v.context, "Drop a query - Work in progress", Toast.LENGTH_SHORT)
+                    .show()
                 //openFragment(QueryFragment.newInstance())
                 dialog.dismiss()
             }
@@ -108,6 +110,7 @@ private lateinit var dialog: Dialog
     }
 
 
+    @SuppressLint("InflateParams")
     private fun showDialog(view: View) {
         dialog = Dialog(view.context)
         dialog.setCancelable(true)
@@ -118,10 +121,12 @@ private lateinit var dialog: Dialog
         dialogView.findViewById<Button>(R.id.btn_just_call).setOnClickListener(this)
         dialogView.findViewById<Button>(R.id.btn_drop_query).setOnClickListener(this)
         dialog.show()
+    }
 
     override fun setNotificationDetailsData(view: View) {
         TODO("Not yet implemented")
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback = object : OnBackPressedCallback(true) {

@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/dialog_rounded_layout"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="8dp">
 
-    <TextView
+    ​<TextView
         android:id="@+id/textView_helplines"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:layout_margin="2dp"
+        android:text="@string/text_helplines"
         android:fontFamily="@font/roboto"
-        android:text="Helplines"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
+        android:textColor="@color/text_active_value"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+    ​
     <Button
         android:id="@+id/btn_just_call"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -30,10 +28,11 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_layout"
         android:fontFamily="@font/roboto"
-        android:text="Just a call"
+        android:text="@string/text_just_a_call"
+        android:layout_marginBottom="8dp"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
-
+        android:textColor="@color/text_tab_change_color" />
+    ​
     <Button
         android:id="@+id/btn_drop_query"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -43,8 +42,8 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_layout"
         android:fontFamily="@font/roboto"
-        android:text="Drop a query"
+        android:text="@string/text_drop_a_query"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
-
+        android:textColor="@color/text_tab_change_color" />
+    ​
 </LinearLayout>
