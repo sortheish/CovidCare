@@ -11,14 +11,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.*
 import com.org.covidcare.R
-import kotlinx.android.synthetic.main.fragment_guide.*
 import kotlinx.android.synthetic.main.fragment_helpline.*
 import kotlinx.android.synthetic.main.fragment_helpline.view.*
 
 
 class HelplineFragment : Fragment(), View.OnClickListener {
     private val TAG = "HelplineFragment"
-    private lateinit var database: DatabaseReference
+
+    //private lateinit var database: DatabaseReference
     private val dbPath = "helpline"
 
     private val city1 = "PUNE"
@@ -81,7 +81,7 @@ class HelplineFragment : Fragment(), View.OnClickListener {
         rl_city1.visibility = View.VISIBLE
         rl_city2.visibility = View.VISIBLE
         rl_city3.visibility = View.VISIBLE
-        textView_helplines.text = "Helpline Numbers"
+        textView_helplines.text = getString(R.string.text_helpline_numbers)
 
         textView_header1.text = city1
         textView_details1.text = addNewLines(valueCity1)
@@ -133,11 +133,10 @@ class HelplineFragment : Fragment(), View.OnClickListener {
         textViewDetails: TextView?,
         cityActive: Boolean
     ) {
-        if(cityActive){
+        if (cityActive) {
             imageViewArrow!!.setBackgroundResource(android.R.drawable.arrow_down_float)
             textViewDetails!!.visibility = View.GONE
-        }
-        else{
+        } else {
             imageViewArrow!!.setBackgroundResource(android.R.drawable.arrow_up_float)
             textViewDetails!!.visibility = View.VISIBLE
         }

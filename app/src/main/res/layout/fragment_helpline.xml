@@ -20,8 +20,8 @@
             android:layout_margin="16dp"
             android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
-            android:text="Loading Helpline Numbers..."
-            android:textColor="@android:color/holo_red_dark"
+            android:text="@string/text_loading_helpline_numbers"
+            android:textColor="@color/text_active_value"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -29,6 +29,9 @@
             android:id="@+id/rl_city1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:visibility="gone">
 
             <TextView
@@ -39,11 +42,11 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:padding="16dp"
-                android:text="City1"
+                android:text="@string/text_city1"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/imageView_arrow1"
@@ -53,7 +56,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="18dp"
-                android:background="@android:drawable/arrow_down_float" />
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
 
             <TextView
                 android:id="@+id/textView_details1"
@@ -63,7 +68,7 @@
                 android:autoLink="phone"
                 android:background="@color/app_background"
                 android:padding="16dp"
-                android:text="We’ve made changes to our Terms of Service and Privacy Policy. They take effect on September 1, 2020, and we encourage you to review them. By continuing to use our services, you agree to the new Terms of Service and acknowledge the Privacy Policy applies to you."
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:visibility="gone" />
@@ -73,6 +78,10 @@
             android:id="@+id/rl_city2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:visibility="gone">
 
             <TextView
@@ -83,10 +92,10 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:padding="16dp"
-                android:text="City2"
+                android:text="@string/text_city2"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -97,7 +106,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="18dp"
-                android:background="@android:drawable/arrow_down_float" />
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
 
             <TextView
                 android:id="@+id/textView_details2"
@@ -106,7 +117,7 @@
                 android:layout_below="@+id/textView_header2"
                 android:background="@color/app_background"
                 android:padding="16dp"
-                android:text="We’ve made changes to our Terms of Service and Privacy Policy. They take effect on September 1, 2020, and we encourage you to review them. By continuing to use our services, you agree to the new Terms of Service and acknowledge the Privacy Policy applies to you."
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:visibility="gone" />
@@ -116,7 +127,11 @@
             android:id="@+id/rl_city3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/textView_header3"
@@ -126,10 +141,10 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:padding="16dp"
-                android:text="City3"
+                android:text="@string/text_city3"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -140,7 +155,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="18dp"
-                android:background="@android:drawable/arrow_down_float" />
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
 
             <TextView
                 android:id="@+id/textView_details3"
@@ -149,7 +166,7 @@
                 android:layout_below="@+id/textView_header3"
                 android:background="@color/app_background"
                 android:padding="16dp"
-                android:text="We’ve made changes to our Terms of Service and Privacy Policy. They take effect on September 1, 2020, and we encourage you to review them. By continuing to use our services, you agree to the new Terms of Service and acknowledge the Privacy Policy applies to you."
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:visibility="gone" />

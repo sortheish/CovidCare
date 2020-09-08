@@ -38,7 +38,7 @@ const val DISTRICT_CASES = "confirmed"
 const val DISTRICT_RECOVERED = "recovered"
 const val DISTRICT_DEATHS = "deceased"
 
-const val REG_NUMBER = "^[7-9][0-9]{9}\$"
+//const val REG_NUMBER = "^[7-9][0-9]{9}\$"
 const val IS_LOGGED_IN = "isLoggedIn"
 const val USER_NAME = "userName"
 const val USER_MOBILE_NUMBER = "userMobileNumber"

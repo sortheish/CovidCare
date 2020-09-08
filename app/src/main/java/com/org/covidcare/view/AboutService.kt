@@ -1,6 +1,5 @@
 package com.org.covidcare.view
 
-import android.app.Activity
 import android.view.View
 
 /**

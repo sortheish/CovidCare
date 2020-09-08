@@ -65,14 +65,14 @@ object CovidData {
         }
     }
 
-    fun getDate(timestamp: Long) :String {
+    fun getDate(timestamp: Long): String {
         val inputFormat: DateFormat = SimpleDateFormat("ddMMM", Locale.US)
         return inputFormat.format(timestamp).toString()
     }
 
-    fun getTime(timestamp: Long) :String {
+    fun getTime(timestamp: Long): String {
         val inputFormat: DateFormat = SimpleDateFormat("hh:mmaa", Locale.US)
-        Log.e("Value Date",""+ inputFormat.format(timestamp).toString())
+        Log.e("Value Date", "" + inputFormat.format(timestamp).toString())
         return inputFormat.format(timestamp).toString()
     }
 }
