@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_rounded_layout"
+    android:padding="@dimen/query_page_common_gap">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView_drop_query"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@color/app_dark_background"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Drop us a query"
+            android:textColor="@color/text_tab_change_color"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_drop_query_details"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@color/app_dark_background"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="8dp"
+            android:text="Fill the below details and we will help you in next 24 hours"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_drop_query" />
+
+        <Button
+            android:id="@+id/btn_drop_query"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/query_page_common_gap"
+            android:background="@drawable/button_layout"
+            android:fontFamily="@font/roboto"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextQuery" />
+
+        <EditText
+            android:id="@+id/editTextPersonName"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/query_page_common_gap"
+            android:background="@color/alert_dialog_text_color"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_drop_query_details" />
+
+        <EditText
+            android:id="@+id/editTextEmpId"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/query_page_common_gap"
+            android:background="@color/alert_dialog_text_color"
+            android:ems="10"
+            android:hint="Emp Id"
+            android:inputType="number"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPersonName" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/query_page_common_gap"
+            android:background="@color/alert_dialog_text_color"
+            android:ems="10"
+            android:hint="Mobile"
+            android:inputType="number"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmpId" />
+
+        <EditText
+            android:id="@+id/editTextQuery"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="@dimen/query_page_common_gap"
+            android:layout_marginBottom="@dimen/query_page_common_gap"
+            android:background="@color/alert_dialog_text_color"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Query"
+            android:inputType="textMultiLine"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
