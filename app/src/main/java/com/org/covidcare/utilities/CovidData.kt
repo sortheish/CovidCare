@@ -3,8 +3,10 @@ package com.org.covidcare.utilities
 import android.content.Context
 import android.net.ConnectivityManager
 import android.text.TextUtils
+import android.util.Log
 import com.org.covidcare.model.Count
 import com.org.covidcare.model.District
+import com.org.covidcare.model.NotificationInfo
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -21,6 +23,7 @@ object CovidData {
     val districts = ArrayList<District>()
     val graphDate = ArrayList<String>()
     val graphCount = ArrayList<Count>()
+    val notifications = ArrayList<NotificationInfo>()
 
     fun logout() {
         App.prefs.userName = ""
@@ -60,5 +63,16 @@ object CovidData {
                 android.util.Patterns.PHONE.matcher(phone).matches()
             }
         }
+    }
+
+    fun getDate(timestamp: Long) :String {
+        val inputFormat: DateFormat = SimpleDateFormat("ddMMM", Locale.US)
+        return inputFormat.format(timestamp).toString()
+    }
+
+    fun getTime(timestamp: Long) :String {
+        val inputFormat: DateFormat = SimpleDateFormat("hh:mmaa", Locale.US)
+        Log.e("Value Date",""+ inputFormat.format(timestamp).toString())
+        return inputFormat.format(timestamp).toString()
     }
 }

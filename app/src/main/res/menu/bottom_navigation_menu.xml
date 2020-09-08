@@ -1,19 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_home"
-        android:checkable="false"
+        android:id="@+id/page_about"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="@string/tab_home" />
+        android:icon="@drawable/ic_about"
+        android:title="@string/tab_cybage" />
     <item
         android:id="@+id/page_guide"
         android:enabled="true"
         android:icon="@drawable/ic_guide"
         android:title="@string/tab_guide" />
-
     <item
-        android:id="@+id/page_about"
+        android:id="@+id/page_home"
+        android:checkable="false"
         android:enabled="true"
-        android:icon="@drawable/ic_about"
-        android:title="@string/tab_about" />
+        android:icon="@drawable/ic_home"
+        android:title="@string/tab_home" />
 </menu>

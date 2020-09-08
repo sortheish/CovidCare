@@ -38,43 +38,14 @@
             {
               "client_id": "819897549222-n0k0biuconsj9qbdmgf21pqal1ih567j.apps.googleusercontent.com",
               "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:819897549222:android:676e3fa899be66c6140f67",
-        "android_client_info": {
-          "package_name": "com.org.myapplication"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "819897549222-pli9nrnkmrje5e9hnvqhtdvnuh9ptv4b.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.org.myapplication",
-            "certificate_hash": "ec71453f6162c3ade225f56d24dc05dd49f6edb5"
-          }
-        },
-        {
-          "client_id": "819897549222-n0k0biuconsj9qbdmgf21pqal1ih567j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAfGc8ME69z9OszDqAUnOrN2bZXY71iCRM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
+            },
             {
-              "client_id": "819897549222-n0k0biuconsj9qbdmgf21pqal1ih567j.apps.googleusercontent.com",
-              "client_type": 3
+              "client_id": "819897549222-5tpqfrabboqp5utb23q5o94njoaj5lhf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cybage.covidcare",
+                "app_store_id": "12111991"
+              }
             }
           ]
         }

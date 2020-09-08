@@ -23,5 +23,9 @@ class SharedPrefs(context:Context){
         get() = prefs.getString(USER_NAME, "")
         set(value) = prefs.edit().putString(USER_MOBILE_NUMBER,value).apply()
 
+    var uniqueID: String?
+        get() = prefs.getString(UNIQUE_ID,"")
+        set(value) = prefs.edit().putString(UNIQUE_ID,value).apply()
+
     val requestQueue = Volley.newRequestQueue(context)!!
 }
