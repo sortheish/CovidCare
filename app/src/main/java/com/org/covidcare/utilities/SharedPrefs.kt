@@ -20,8 +20,16 @@ class SharedPrefs(context: Context) {
         set(value) = prefs.edit().putString(USER_NAME, value).apply()
 
     var userMobileNumber: String?
-        get() = prefs.getString(USER_NAME, "")
+        get() = prefs.getString(USER_MOBILE_NUMBER, "")
         set(value) = prefs.edit().putString(USER_MOBILE_NUMBER, value).apply()
+
+    var userEmailAddress: String?
+        get() = prefs.getString(USER_EMAIL_ADDRESS, "")
+        set(value) = prefs.edit().putString(USER_EMAIL_ADDRESS, value).apply()
+
+    var userEmpID: String?
+        get() = prefs.getString(USER_EMP_ID, "")
+        set(value) = prefs.edit().putString(USER_EMP_ID, value).apply()
 
     var uniqueID: String?
         get() = prefs.getString(UNIQUE_ID, "")

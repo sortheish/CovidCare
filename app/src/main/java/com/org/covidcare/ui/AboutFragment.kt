@@ -78,7 +78,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
             }
             R.id.btn_dialog_verify -> {
                 Log.e("Button", "Click")
-                if (dialog.text_user_name.text.toString().isNotEmpty()) {
+                if (dialog.editTextNumber.text.toString().isNotEmpty()) {
                     if (isValidPhone(dialog.editTextNumber.text.toString())) {
                         notificationInfoPresenter?.isPhoneNumberValidate(dialog.editTextNumber.text.toString()) { isRegister ->
                             if (isRegister) {
@@ -111,7 +111,7 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
                 } else {
                     Toast.makeText(
                         activity,
-                        getString(R.string.call_for_user_name),
+                        "Please enter mobile number ",
                         Toast.LENGTH_SHORT
                     )
                         .show()
@@ -229,8 +229,8 @@ class AboutFragment : Fragment(), AboutService.AboutView, View.OnClickListener,
                 App.prefs.isLoggedIn = true
                 notificationInfoPresenter?.updateLoginStatus()
                 App.prefs.userMobileNumber = dialog.editTextNumber.text.toString()
-                App.prefs.userName = dialog.text_user_name.text.toString()
-                openFragment(WelcomeFragment.newInstance(dialog.text_user_name.text.toString()))
+                //App.prefs.userName = dialog.text_user_name.text.toString()
+                openFragment(WelcomeFragment.newInstance(App.prefs.userName))
             } else {
                 when (task.exception) {
                     is FirebaseAuthInvalidCredentialsException -> {

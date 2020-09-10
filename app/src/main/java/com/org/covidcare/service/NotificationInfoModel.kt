@@ -1,5 +1,6 @@
 package com.org.covidcare.service
 
+import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -73,14 +74,26 @@ class NotificationInfoModel : NotificationInfoService.NotificationInfoModel {
     }
 
     /**
-     * Check the user number is register or not using database FIREBASE_DATABASE_REGI_USER
+     * Check the user number is register or not using database FIREBASE_DATABASE_CYBAGIANS
      */
     override fun isPhoneNumberValidate(phoneNumber: String, complete: (Boolean) -> Unit) {
         val database = Firebase.database
-        val databaseRef = database.getReference(FIREBASE_DATABASE_REGI_USER)
+        val databaseRef = database.getReference(FIREBASE_DATABASE_CYBAGIANS)
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChild(phoneNumber)) {
+                    App.prefs.userEmailAddress = dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_EMAIL_ID).value.toString()
+                    Log.e("email",dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_EMAIL_ID).value.toString())
+                    App.prefs.userName = dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_USERNAME).value.toString()
+                    Log.e("userName",dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_USERNAME).value.toString())
+                    App.prefs.userEmpID = dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_EMP_ID).value.toString()
+                    Log.e("userName1", dataSnapshot.child(phoneNumber)
+                        .child(FIREBASE_CYBAGIANS_EMP_ID).value.toString())
                     complete(true)
                 }
             }

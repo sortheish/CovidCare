@@ -22,7 +22,7 @@
     <Button
         android:id="@+id/btn_just_call"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
@@ -31,19 +31,25 @@
         android:text="@string/text_just_a_call"
         android:layout_marginBottom="8dp"
         android:textAllCaps="false"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_call_black"
+        android:drawableTint="@color/text_tab_change_color"
         android:textColor="@color/text_tab_change_color" />
     ​
     <Button
         android:id="@+id/btn_drop_query"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_layout"
         android:fontFamily="@font/roboto"
         android:text="@string/text_drop_a_query"
+        android:textSize="16sp"
         android:textAllCaps="false"
+        android:drawableTint="@color/text_tab_change_color"
+        android:drawableLeft="@drawable/help_outline_black"
         android:textColor="@color/text_tab_change_color" />
     ​
 </LinearLayout>

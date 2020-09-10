@@ -43,11 +43,12 @@ class NotificationListAdapter(
             itemView.findViewById<TextView>(R.id.date)!!
         private val textTitle =
             itemView.findViewById<TextView>(R.id.title)!!
-
+        private val textBody = itemView.findViewById<TextView>(R.id.body)
         fun bindDistrictData(notificationInfo: NotificationInfo) {
             textSenderGroup.text = notificationInfo.sender_group
             CovidData.getDate(notificationInfo.date!!)
             textTitle.text = notificationInfo.title
+            textBody.text = notificationInfo.content
             if (CovidData.getDate(notificationInfo.date) == getCurrentDate()) {
                 textDate.text = CovidData.getTime(notificationInfo.date)
             } else {
