@@ -1,11 +1,13 @@
 package com.org.covidcare.service
 
+import android.content.Context
 import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.org.covidcare.handlers.DatabaseHandler
 import com.org.covidcare.model.NotificationInfo
 import com.org.covidcare.utilities.*
 
@@ -17,24 +19,29 @@ class NotificationInfoModel : NotificationInfoService.NotificationInfoModel {
      * Get all email data from server(firebase) from database FIREBASE_DATABASE_COVID_CARE
      * to show the data in list.
      */
-    override fun getNotificationList(dataSnapshot: DataSnapshot) {
+    override fun getNotificationList(dataSnapshot: DataSnapshot,context:Context) {
         for (artistSnapshot in dataSnapshot.children) {
+            val databaseHandler = DatabaseHandler(context)
+            val notificationId: String? = artistSnapshot.key
             val senderGroup: String = artistSnapshot.child(FIREBASE_TITLE).value.toString()
             val date: Long = artistSnapshot.child(FIREBASE_DATE).value as Long
             val title: String = artistSnapshot.child(FIREBASE_SUBJECT).value.toString()
             val image: String = artistSnapshot.child(FIREBASE_PHOTO).value.toString()
             val content: String = artistSnapshot.child(FIREBASE_CONTENT).value.toString()
             val link: String = artistSnapshot.child(FIREBASE_LINK).value.toString()
-            CovidData.notifications.add(
-                NotificationInfo(
-                    senderGroup,
-                    date,
-                    title,
-                    image,
-                    content,
-                    link
-                )
-            )
+           if(!databaseHandler.findId( notificationId!!)!!) {
+               CovidData.notifications.add(
+                   NotificationInfo(
+                       notificationId,
+                       senderGroup,
+                       date,
+                       title,
+                       image,
+                       content,
+                       link
+                   )
+               )
+            }
         }
     }
 
@@ -51,6 +58,7 @@ class NotificationInfoModel : NotificationInfoService.NotificationInfoModel {
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChild(notification_data_id!!)) {
+
                     val senderGroup: String = dataSnapshot.child(notification_data_id)
                         .child(FIREBASE_TITLE).value.toString()
                     val date: Long =
@@ -63,7 +71,7 @@ class NotificationInfoModel : NotificationInfoService.NotificationInfoModel {
                         .child(FIREBASE_CONTENT).value.toString()
                     val link: String = dataSnapshot.child(notification_data_id)
                         .child(FIREBASE_LINK).value.toString()
-                    complete(NotificationInfo(senderGroup, date, title, image, content, link))
+                    complete(NotificationInfo("",senderGroup, date, title, image, content, link))
                 }
             }
 

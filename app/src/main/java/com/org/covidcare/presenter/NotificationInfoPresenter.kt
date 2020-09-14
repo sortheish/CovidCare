@@ -1,5 +1,6 @@
 package com.org.covidcare.presenter
 
+import android.content.Context
 import android.view.View
 import com.google.firebase.database.DataSnapshot
 import com.org.covidcare.model.NotificationInfo
@@ -13,8 +14,8 @@ class NotificationInfoPresenter(notificationView: NotificationInfoService.Notifi
     NotificationInfoService.NotificationInfoPresenter {
     private var model = NotificationInfoModel()
     private var view = notificationView
-    override fun getNotificationList(dataSnapshot: DataSnapshot) {
-        model.getNotificationList(dataSnapshot)
+    override fun getNotificationList(dataSnapshot: DataSnapshot,context: Context) {
+        model.getNotificationList(dataSnapshot,context)
     }
 
     override fun getDataFromServer(

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -17,6 +18,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.org.covidcare.R
 import com.org.covidcare.adapter.NotificationListAdapter
+import com.org.covidcare.handlers.DatabaseHandler
+import com.org.covidcare.handlers.SwipeToDeleteHandler
+import com.org.covidcare.model.NotificationInfo
 import com.org.covidcare.presenter.NotificationInfoPresenter
 import com.org.covidcare.service.NotificationInfoService
 import com.org.covidcare.utilities.App
@@ -45,14 +49,13 @@ class NotificationFragment : Fragment(), NotificationInfoService.NotificationInf
 
         notificationInfoPresenter = NotificationInfoPresenter(this)
         notificationInfoPresenter?.setNotificationDetailsData(view)
-
         val database = Firebase.database
         val databaseRef = database.getReference(FIREBASE_DATABASE_COVID_CARE)
         databaseRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 notificationInfoPresenter?.clearData()
-                notificationInfoPresenter?.getNotificationList(dataSnapshot)
+                notificationInfoPresenter?.getNotificationList(dataSnapshot,context!!)
                 notificationListAdapter?.notifyDataSetChanged()
             }
 
@@ -60,7 +63,6 @@ class NotificationFragment : Fragment(), NotificationInfoService.NotificationInf
                 Log.e("Notification", "Failed to read value.", error.toException())
             }
         })
-
         return view
     }
 
@@ -91,5 +93,24 @@ class NotificationFragment : Fragment(), NotificationInfoService.NotificationInf
         val list = view.findViewById<RecyclerView>(R.id.list_notifications)
         list.layoutManager = layoutManager
         list.adapter = notificationListAdapter
+        swipeToDelete(view)
+    }
+
+    private fun swipeToDelete(view: View){
+        val swipeToDeleteCallback = object : SwipeToDeleteHandler(context) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                addDeletedNotificationIdToDatabase(CovidData.notifications[position].notification_id)
+                CovidData.notifications.removeAt(position)
+                notificationListAdapter!!.notifyItemRemoved(position)
+            }
+        }
+            ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(view.findViewById(R.id.list_notifications))
+    }
+
+    private fun addDeletedNotificationIdToDatabase(notificationId: String?) {
+        if (notificationId != null) {
+            DatabaseHandler(context).addNotificationIds(NotificationInfo(notificationId, "",0,"","","",""))
+        }
     }
 }

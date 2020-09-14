@@ -63,7 +63,7 @@ class QueryFragment : Fragment(), View.OnClickListener {
     private fun submitQuery() {
         val query = Query(
             App.prefs.userName,
-            App.prefs.userEmpID,
+           App.prefs.userEmpID,
             editTextNumber.text.toString(),
             editTextQuery.text.toString(),
             App.prefs.userEmailAddress,
