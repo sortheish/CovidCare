@@ -254,6 +254,8 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
 
     private fun displayAnswer1() {
         group_q1_options.visibility = View.GONE
+        question1_option_none.visibility = View.GONE
+        question1_next.visibility = View.GONE
         question1_answer.text = questionAnswerMap[1]
         question1_answer.visibility = View.VISIBLE
         askQuestion2()
@@ -296,6 +298,8 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
 
     private fun displayAnswer2() {
         group_q2_options.visibility = View.GONE
+        question2_option_none.visibility = View.GONE
+        question2_next.visibility = View.GONE
         question2_answer.text = questionAnswerMap[2]
         question2_answer.visibility = View.VISIBLE
         if (questionAnswerMap[1].equals(question1_option_none.text.toString())) {
@@ -369,6 +373,14 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
 
     private fun finalAnswers() {
 
+        /*Sample Question-
+        "Question: Are you experiencing Are you experiencing any of the following symptoms?" +
+                "\nAnswer: Cough, Fever\nQuestion: Have you ever had any of the following?" +
+                "\nAnswer: Hypertension, Heart Disease\nQuestion: Which of the following apply to you?" +
+                "\nAnswer: Recently interacted or lived or currently living with someone who has
+                tested positive for COVID 19\n"
+        */
+
         val questions = HashMap<Int, String>()
         questions[1] = text_question1.text.toString()
         questions[2] = text_question2.text.toString()
@@ -376,8 +388,6 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
         questions[4] = text_question4.text.toString()
         questions[5] = text_question5.text.toString()
         questions[6] = text_question6.text.toString()
-        //"Qustion: Are you experiencing any of the following symptoms?\nAnswer: Cough\nQuestion: Have you ever had any of the following\nAnswer: Diabetes\nQuestion: Which of the following apply to you?\nAnswer: Travelled internationally in last 14 days"
-        "Question: Are you experiencing Are you experiencing any of the following symptoms?\nAnswer: Cough, Fever\nQuestion: Have you ever had any of the following?\nAnswer: Hypertension, Heart Disease\nQuestion: Which of the following apply to you?\nAnswer: Recently interacted or lived or currently living with someone who has tested positive for COVID 19\n"
         questionnaire = ""
 
         questionAnswerMap.forEach {
@@ -387,10 +397,14 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
         }
 
         Log.i("questionnaire value is --", questionnaire)
+
+        // todo: Remove in production build, just for testing values
+        stringFinalTv.visibility = View.GONE
+        //stringFinalTv.text = questionnaire
     }
 
     private fun highRiskLaterClicked() {
-        activity?.onBackPressed()
+        closeFragment()
     }
 
     private fun highRiskConfirmClicked() {
@@ -412,14 +426,25 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
 
         myRef.child(key!!).setValue(statusValues).addOnSuccessListener {
             Toast.makeText(context, "Status submitted!", Toast.LENGTH_SHORT).show()
-            activity?.onBackPressed()
+            closeFragment()
         }.addOnFailureListener {
             Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun lowRiskOptionClicked() {
-        activity?.onBackPressed()
+        closeFragment()
+    }
+
+    private fun closeFragment() {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(
+            R.id.fragment_container,
+            WelcomeFragment.newInstance(App.prefs.userName)
+        )
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+        activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
     }
 
 }
