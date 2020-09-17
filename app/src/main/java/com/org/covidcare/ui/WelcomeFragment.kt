@@ -63,6 +63,7 @@ class WelcomeFragment : Fragment(), View.OnClickListener,
         view.btn_logout.setOnClickListener(this)
         view.btn_help_line.setOnClickListener(this)
         view.btn_feed.setOnClickListener(this)
+        view.btn_self_assist.setOnClickListener(this)
         return view
     }
 
@@ -93,6 +94,10 @@ class WelcomeFragment : Fragment(), View.OnClickListener,
                 //Toast.makeText(v.context, "Drop a query", Toast.LENGTH_SHORT).show()
                 openFragment(QueryFragment.newInstance())
                 dialog.dismiss()
+            }
+
+            R.id.btn_self_assist -> {
+                openFragment(SelfAssistFragment.newInstance())
             }
         }
     }
