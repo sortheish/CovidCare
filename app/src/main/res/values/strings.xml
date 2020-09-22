@@ -38,7 +38,6 @@
     <string name="text_desc_image_cybage">desc_image_cybage</string>
     <string name="text_alert_internet">Check Internet Connection</string>
     <string name="text_share_message">"Download Covid Care app from this link.Android: https://drive.google.com/file/d/1RfD4-r5sYtkV5bWx78h8JuqecmIlaRRj/view?usp=sharing</string>
-    <string name="text_fever">Fever</string>
     <string name="text_dry_cough">Dry cough</string>
     <string name="text_covid_common_symptoms">COVID common symptoms</string>
     <string name="text_less_common_symptoms">Less common symptoms</string>
@@ -128,4 +127,38 @@
     <string name="text_employee_id">Employee ID</string>
     <string name="text_mobile_number">Mobile Number</string>
     <string name="text_query">Query</string>
+    <string name="que_one_are_you_experiencing_any_of_the_following_symptoms">Are you experiencing any of the following symptoms?</string>
+    <string name="text_cough">Cough</string>
+    <string name="text_fever">Fever</string>
+    <string name="text_loss_of_taste_and_smell">Loss of taste and smell</string>
+    <string name="text_difficulty_in_breathing">Difficulty in breathing</string>
+    <string name="text_none_of_the_above">None of the above</string>
+    <string name="que_two_have_you_ever_had_any_of_the_following">Have you ever had any of the following?</string>
+    <string name="text_diabetes">Diabetes</string>
+    <string name="text_hypertension">Hypertension</string>
+    <string name="text_lung_disease">Lung Disease</string>
+    <string name="text_heart_disease">Heart Disease</string>
+    <string name="text_kidney_disorder">Kidney Disorder</string>
+    <string name="text_next">Next</string>
+    <string name="text_answer_text">Answer Text</string>
+    <string name="que_three_have_you_travelled_anywhere_internationally_in_last_28_45_days">Have you travelled anywhere internationally in last 28-45 days?</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="que_four_which_of_the_following_apply_to_you">Which of the following apply to you?</string>
+    <string name="text_i_am_a_healthcare_worker_and_i_examined_a_covid_19_confirmed_case_without_protective_gear">I Am a healthcare worker and I examined a COVID-19 confirmed case without protective gear</string>
+    <string name="que_five_which_of_the_following_apply_to_you">Which of the following apply to you?</string>
+    <string name="text_travelled_internationally_in_last_14_days">Travelled internationally in last 14 days</string>
+    <string name="text_recently_interacted_or_lived_or_currently_living_with_someone_who_has_tested_positive_for_covid_19">Recently interacted or lived or currently living with someone who has tested positive for COVID 19</string>
+    <string name="text_am_a_healthcare_worker">Am a healthcare worker</string>
+    <string name="que_six_when_did_this_interaction_take_place">When did this interaction take place?</string>
+    <string name="text_less_than_5_days_ago">Less than 5 days ago</string>
+    <string name="text_greater_than_5_days_ago">Greater than 5 days ago</string>
+    <string name="text_greater_than_14_days_ago">Greater than 14 days ago</string>
+    <string name="text_your_infection_risk_is_low_we_recommednted_that_you_stay_at_home_to_avoid_any_chance_of_exposure_to_novel_coronavirus_n_nretake_the_self_assesment_test_if_you_develop_symptoms_or_come_in_contact_with_a_covid_19_confirmed_patients_n_ndo_visit_nhttps_www_mohfw_gov_in_nfor_more_information">Your infection risk is low. We recommednted that you stay at home to avoid any chance of exposure to Novel Coronavirus.\n\nRetake the self assesment Test if you develop symptoms or come in contact with a COVID-19 confirmed patients.\n\nDo visit:\nhttps://www.mohfw.gov.in/\nfor more information</string>
+    <string name="text_ok">Ok</string>
+    <string name="text_thank_you_for_taking_this_assessment_n_nif_the_information_provided_by_you_is_accuarte_it_indicates_that_you_are_either_unwell_or_at_risk_your_test_results_and_location_history_need_to_be_sent_to_cybage_hrd_to_help_you_and_help_identify_potential_hotspots_where_infection_may_be_spreading">Thank you for taking this assessment\n\nIf the information provided by you is accuarte, it indicates that you are either unwell or at risk. Your test results and location history need to be sent to Cybage HRD to help you and help identify potential hotspots where infection may be spreading.</string>
+    <string name="text_confirm_amp_send"><![CDATA[Confirm & Send]]></string>
+    <string name="text_will_do_it_later">Will do it later</string>
+    <string name="text_please_give_correct_answers_nall_the_info_you_have_shared_with_us_is_protected_nhelp_us_help_you">Please give correct Answers \nAll the info you have shared with us is protected \nHelp us- Help you</string>
+    <string name="desc_image_self">image_self</string>
 </resources>

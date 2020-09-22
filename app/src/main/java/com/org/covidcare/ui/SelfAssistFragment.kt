@@ -98,16 +98,6 @@ class SelfAssistFragment : Fragment(), View.OnClickListener {
 
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                activity?.finish()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-    }
-
     override fun onClick(v: View?) {
         when (v!!.id) {
 
