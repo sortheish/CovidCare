@@ -163,13 +163,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btnDos"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginTop="6dp"
-            android:background="@color/app_dark_background"
             android:backgroundTint="@color/text_recovered_value"
             android:text="@string/text_do_s"
             android:textSize="18sp"
@@ -442,9 +440,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btnDoNot"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="6dp"
@@ -686,9 +683,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btnGuidelines"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginTop="6dp"

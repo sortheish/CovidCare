@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <TableRow
+            android:id="@+id/heading_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageViewBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/self_assestment_test"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/desc_image_self" />
+
+                <TextView
+                    android:id="@+id/textViewHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:layout_margin="10dp"
+                    android:text="@string/text_please_give_correct_answers_nall_the_info_you_have_shared_with_us_is_protected_nhelp_us_help_you"
+                    android:textAlignment="center"
+                    android:textColor="@color/alert_dialog_text_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewBanner" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewHeader" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_one_are_you_experiencing_any_of_the_following_symptoms"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question1_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_cough"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question1"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question1" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_fever"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/question1_option1"
+                    app:layout_constraintTop_toTopOf="@+id/question1_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_option3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_loss_of_taste_and_smell"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/question1_option2"
+                    app:layout_constraintTop_toTopOf="@+id/question1_option2" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_option4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_difficulty_in_breathing"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question1_option1"
+                    app:layout_constraintTop_toBottomOf="@+id/question1_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@color/design_default_color_secondary"
+                    android:minWidth="0dp"
+                    android:text="@string/text_next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/question1_option4"
+                    app:layout_constraintTop_toTopOf="@+id/question1_option4" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_option_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_none_of_the_above"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/question1_option4"
+                    app:layout_constraintTop_toBottomOf="@+id/question1_option4" />
+
+                <android.widget.Button
+                    android:id="@+id/question1_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:minWidth="0dp"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question1_option_none" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q1_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question1_option3,question1_option2,question1_option1,question1_option4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_two_have_you_ever_had_any_of_the_following"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_diabetes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question2"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question2" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_hypertension"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/question2_option1"
+                    app:layout_constraintTop_toTopOf="@+id/question2_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_lung_disease"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/question2_option2"
+                    app:layout_constraintTop_toTopOf="@+id/question2_option2" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_heart_disease"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question2_option1"
+                    app:layout_constraintTop_toBottomOf="@+id/question2_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_kidney_disorder"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/question2_option4"
+                    app:layout_constraintTop_toTopOf="@+id/question2_option4" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@color/design_default_color_secondary"
+                    android:minWidth="0dp"
+                    android:text="@string/text_next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/question2_option5"
+                    app:layout_constraintTop_toTopOf="@+id/question2_option4" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_option_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@drawable/option_button_selector"
+                    android:minWidth="0dp"
+                    android:text="@string/text_none_of_the_above"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/question2_option4"
+                    app:layout_constraintTop_toBottomOf="@+id/question2_option4" />
+
+                <android.widget.Button
+                    android:id="@+id/question2_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:gravity="end"
+
+                    android:minWidth="0dp"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question2_option_none" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q2_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question2_option2,question2_option5,question2_option1,question2_option3,question2_option4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_three_have_you_travelled_anywhere_internationally_in_last_28_45_days"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.Button
+                    android:id="@+id/question3_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:minWidth="0dp"
+                    android:text="@string/text_yes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question3"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question3" />
+
+                <android.widget.Button
+                    android:id="@+id/question3_option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:minWidth="0dp"
+                    android:text="@string/text_no"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/question3_option1"
+                    app:layout_constraintTop_toTopOf="@+id/question3_option1" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question3_answer"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:minWidth="0dp"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question3_option1" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q3_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question3_option1,question3_option2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_four_which_of_the_following_apply_to_you"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question4_option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_recently_interacted_or_lived_or_currently_living_with_someone_who_has_tested_positive_for_covid_19"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question4"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question4" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question4_option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_i_am_a_healthcare_worker_and_i_examined_a_covid_19_confirmed_case_without_protective_gear"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question4_option1"
+                    app:layout_constraintTop_toBottomOf="@+id/question4_option1" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question4_option_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_none_of_the_above"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/question4_option2"
+                    app:layout_constraintTop_toBottomOf="@+id/question4_option2" />
+
+                <android.widget.Button
+                    android:id="@+id/question4_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question4_option_none" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q4_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question4_option1,question4_option_none,question4_option2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_five_which_of_the_following_apply_to_you"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question5_option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_travelled_internationally_in_last_14_days"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question5"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question5" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question5_option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_recently_interacted_or_lived_or_currently_living_with_someone_who_has_tested_positive_for_covid_19"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question5_option1"
+                    app:layout_constraintTop_toBottomOf="@+id/question5_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question5_option3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_am_a_healthcare_worker"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question5_option2"
+                    app:layout_constraintTop_toBottomOf="@+id/question5_option2" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question5_option_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_none_of_the_above"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/question5_option3"
+                    app:layout_constraintTop_toBottomOf="@+id/question5_option3" />
+
+                <android.widget.Button
+                    android:id="@+id/question5_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question5_option_none" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q5_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question5_option1,question5_option3,question5_option_none,question5_option2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_question6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_question6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="5dp"
+                    android:text="@string/que_six_when_did_this_interaction_take_place"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question6_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_less_than_5_days_ago"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_question6"
+                    app:layout_constraintTop_toBottomOf="@+id/text_question6" />
+
+
+                <android.widget.Button
+                    android:id="@+id/question6_option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_greater_than_5_days_ago"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question6_option1"
+                    app:layout_constraintTop_toBottomOf="@+id/question6_option1" />
+
+                <android.widget.Button
+                    android:id="@+id/question6_option3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_greater_than_14_days_ago"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/question6_option2"
+                    app:layout_constraintTop_toBottomOf="@+id/question6_option2" />
+
+                <android.widget.Button
+                    android:id="@+id/question6_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/text_answer_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/question6_option3" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group_q6_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="question6_option1,question6_option3,question6_option2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_result_low_risk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_low_risk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:autoLink="web"
+                    android:text="@string/text_your_infection_risk_is_low_we_recommednted_that_you_stay_at_home_to_avoid_any_chance_of_exposure_to_novel_coronavirus_n_nretake_the_self_assesment_test_if_you_develop_symptoms_or_come_in_contact_with_a_covid_19_confirmed_patients_n_ndo_visit_nhttps_www_mohfw_gov_in_nfor_more_information"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.Button
+                    android:id="@+id/low_risk_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_ok"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_low_risk"
+                    app:layout_constraintTop_toBottomOf="@+id/text_low_risk" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_result_high_risk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_high_risk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/text_thank_you_for_taking_this_assessment_n_nif_the_information_provided_by_you_is_accuarte_it_indicates_that_you_are_either_unwell_or_at_risk_your_test_results_and_location_history_need_to_be_sent_to_cybage_hrd_to_help_you_and_help_identify_potential_hotspots_where_infection_may_be_spreading"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.Button
+                    android:id="@+id/high_risk_option1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_confirm_amp_send"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/text_high_risk"
+                    app:layout_constraintTop_toBottomOf="@+id/text_high_risk" />
+
+                <android.widget.Button
+                    android:id="@+id/high_risk_option2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="@color/alert_dialog_text_color"
+                    android:text="@string/text_will_do_it_later"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/high_risk_option1"
+                    app:layout_constraintTop_toTopOf="@+id/high_risk_option1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/finalstring"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/stringFinalTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="Sample\n\Text\n\n\Aksksk" />
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    tools:context=".ui.HelplineFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutHelpline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_helplines"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_horizontal"
+            android:text="@string/text_loading_helpline_numbers"
+            android:textColor="@color/text_active_value"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/rl_city1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView_header1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/app_dark_background"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:text="@string/text_city1"
+                android:textAllCaps="true"
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/imageView_arrow1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignTop="@+id/textView_header1"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="18dp"
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
+
+            <TextView
+                android:id="@+id/textView_details1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_header1"
+                android:autoLink="phone"
+                android:background="@color/app_background"
+                android:padding="16dp"
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_city2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView_header2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/app_dark_background"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:text="@string/text_city2"
+                android:textAllCaps="true"
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView_arrow2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignTop="@+id/textView_header2"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="18dp"
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
+
+            <TextView
+                android:id="@+id/textView_details2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_header2"
+                android:background="@color/app_background"
+                android:padding="16dp"
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_city3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/liner_layout_rounded_corner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textView_header3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/app_dark_background"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:text="@string/text_city3"
+                android:textAllCaps="true"
+                android:textColor="@color/text_tab_change_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView_arrow3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignTop="@+id/textView_header3"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="18dp"
+                android:backgroundTint="@color/text_tab_change_color"
+                android:background="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/desc_image_arrow_down" />
+
+            <TextView
+                android:id="@+id/textView_details3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_header3"
+                android:background="@color/app_background"
+                android:padding="16dp"
+                android:text="@string/text_we_ve_made_changes_to_our_terms_of_service_and_privacy_policy_they_take_effect_on_september_1_2020_and_we_encourage_you_to_review_them_by_continuing_to_use_our_services_you_agree_to_the_new_terms_of_service_and_acknowledge_the_privacy_policy_applies_to_you"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

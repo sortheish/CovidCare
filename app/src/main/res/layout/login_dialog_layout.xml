@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/dialog_rounded_layout">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:text="@string/text_login"
+        android:fontFamily="@font/roboto"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/textViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:maxLines="2"
+        android:text="@string/please_enter_mobile_number_to_n_receive_a_verification_code"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/text_tab_change_color"
+        android:textSize="16sp"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/text_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/solid_dialog_text_color"
+        android:ems="10"
+        android:hint="@string/text_hint_name"
+        android:paddingStart="8dp"
+        android:paddingEnd="2dp"
+        android:shadowColor="@color/text_deceased_value"
+        android:textColorHint="@color/app_dark_background"
+        android:autofillHints=""
+        android:inputType="text"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/solid_dialog_text_color"
+        android:ems="10"
+        android:drawableStart="@drawable/ic_text_nine_one"
+        android:drawablePadding="8dip"
+        android:inputType="number"
+        android:paddingStart="1dp"
+        android:paddingEnd="1dp"
+        android:shadowColor="@color/text_deceased_value"
+        android:textColorHint="@color/app_dark_background"
+        android:autofillHints=""
+        android:hint="@string/hint_mobile_number"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/editTextOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/solid_dialog_text_color"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/text_otp"
+        android:inputType="number"
+        android:paddingStart="8dp"
+        android:paddingEnd="2dp"
+        android:shadowColor="@color/text_deceased_value"
+        android:textColorHint="@color/app_dark_background"
+        android:visibility="gone"
+        android:autofillHints="" />
+    <TextView
+        android:id="@+id/textViewError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/not_registered_number"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/text_active_value"
+        android:paddingBottom="2dp"
+        android:textSize="14sp"
+        android:visibility="gone"
+        />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:layout_marginBottom="8dp"
+    android:layout_gravity="center">
+
+    <Button
+        android:id="@+id/btn_dialog_go"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_login"
+        android:visibility="gone"
+        android:textColor="@color/text_tab_change_color" />
+
+    <Button
+        android:id="@+id/btn_dialog_verify"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="@string/generate_otp"
+        android:textAllCaps="false"
+        android:textColor="@color/text_tab_change_color" />
+    <Button
+        android:id="@+id/btn_dialog_cancle"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text_cancel"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:textColor="@color/text_tab_change_color"/>
+    <Button
+        android:id="@+id/btn_dialog_resend"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/button_layout"
+        android:fontFamily="@font/roboto"
+        android:text="@string/btn_text_resend"
+        android:enabled="false"
+        android:textAllCaps="false"
+        android:textColor="@color/text_tab_change_color" />
+</LinearLayout>
+
+</LinearLayout>

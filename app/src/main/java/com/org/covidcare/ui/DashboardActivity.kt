@@ -9,37 +9,48 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.org.covidcare.R
+import com.org.covidcare.presenter.NotificationInfoPresenter
+import com.org.covidcare.service.NotificationInfoService
+import com.org.covidcare.utilities.App
 import kotlinx.android.synthetic.main.activity_dashboard.*
-
 
 /**
  * Created by ishwari s on 6/16/2020.
  */
-class DashboardActivity : AppCompatActivity(), View.OnClickListener {
+class DashboardActivity : AppCompatActivity(), View.OnClickListener,
+    NotificationInfoService.NotificationInfoView {
+    private var notificationInfoPresenter: NotificationInfoPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         findViewById<ImageButton>(R.id.btnShareApp).setOnClickListener(this)
+        notificationInfoPresenter = NotificationInfoPresenter(this)
+        notificationInfoPresenter?.setNotificationDetailsData(fragment_container)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        openFragment(HomeFragment.newInstance())
     }
 
     private val mOnNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
             return@OnNavigationItemSelectedListener when (item.itemId) {
-                R.id.page_home -> {
-                    openFragment(HomeFragment.newInstance())
+                R.id.page_about -> {
+                   // openFragment(WelcomeFragment())
+                     if (App.prefs.isLoggedIn) {
+                         val name: String? = App.prefs.userName
+                         openFragment(WelcomeFragment.newInstance(name))
+                     } else {
+                         openFragment(AboutFragment.newInstance())
+                     }
                     true
                 }
                 R.id.page_guide -> {
                     openFragment(GuideFragment.newInstance())
                     true
                 }
-                /*R.id.page_about -> {
-                    openFragment(AboutFragment.newInstance())
+                R.id.page_home -> {
+                    openFragment(HomeFragment.newInstance())
                     true
-                }*/
+                }
                 else -> false
             }
         }
@@ -47,6 +58,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private fun openFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
+        //transaction.add(R.id.fragment_container, fragment, "tag1")
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -63,6 +75,32 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.text_share_message))
                 startActivity(Intent.createChooser(sharingIntent, "Share via"))
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        /*val homeItem: MenuItem = bottom_navigation.menu.getItem(0)
+        bottom_navigation.selectedItemId = homeItem.itemId*/
+
+    }
+
+    override fun setNotificationDetailsData(view: View) {
+        val menuFragment = intent.getStringExtra(getString(R.string.notification_intent_extra_name))
+        if (menuFragment != null) {
+            if (menuFragment == getString(R.string.notification_intent_extra_value)) {
+                notificationInfoPresenter?.getDataFromServer(intent.getStringExtra(getString(R.string.notification_channel_id))) { notificationInfoData ->
+                    openFragment(NotificationDetailsFragment.newInstance(notificationInfoData))
+                }
+           }
+        } else {
+           // openFragment(WelcomeFragment())
+             if (App.prefs.isLoggedIn) {
+                 val name: String? = App.prefs.userName
+                 openFragment(WelcomeFragment.newInstance(name))
+             } else {
+                 openFragment(AboutFragment.newInstance())
+             }
         }
     }
 }
