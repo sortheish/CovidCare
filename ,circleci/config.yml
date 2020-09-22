@@ -1,0 +1,39 @@
+# Verion of circle ci used
+version: 2
+# jobs key represents the phase
+jobs:
+  build:
+    # This is the directory into which our code will be checked out, and this path 
+    # will be used as the default working directory for the rest of the job
+    working_directory: ~/code
+    docker:
+        # Tag of the circle ci provided android image
+      - image: circleci/android:api-26-node
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+        # checkout step is used to operate on the codebase
+      - checkout
+      - restore_cache:
+          # Pull down the cache if present
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+         # Permissions for Fradlew dependencies
+         name: Chmod permissions 
+         command: sudo chmod +x ./gradlew
+      - run:
+          name: Download Dependencies
+          # Task for Pulling the project dependencies
+          command: ./gradlew androidDependencies
+        # save_cache step will store the dependencies in order to speed things up for next time.  
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Run Debug Build
+          command: ./gradlew assembleDebug
+      - store_artifacts:
+          # path is a path to the file or directory to be uploaded as artifact
+          path: app/build/outputs/apk/
+          destination: apks/
