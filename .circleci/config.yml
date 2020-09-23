@@ -55,7 +55,7 @@ jobs:
                   at: .
        - run:
           name: Deploy
-          command: 'aws s3 sync ./app/build/outputs/apk/release/ s3://covidcare-artifact'  
+          command: 'aws s3 sync ./app/build/outputs/apk/ s3://covidcare-artifact'  
 workflows: # Define a Workflow running the build job, then the deploy job
     version:  2
     build-deploy:
