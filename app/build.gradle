@@ -3,6 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.0"
@@ -25,10 +29,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('covidcare.jks')
-            storePassword '********'
-            keyAlias '*******'
-            keyPassword '********'
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storeFile file(rootDir.getCanonicalPath() + '/' + keystoreProperties['releaseKeyStore'])
+            storePassword keystoreProperties['releaseStorePassword']
         }
     }
     productFlavors {
