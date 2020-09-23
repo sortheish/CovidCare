@@ -66,4 +66,4 @@ workflows: # Define a Workflow running the build job, then the deploy job
              - build
            filters:
              branches:
-               only: master # Only deploys when the commit is on the Master branch      
+               only: prod_build # Only deploys when the commit is on the Master branch      
