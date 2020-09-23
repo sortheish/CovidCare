@@ -31,8 +31,8 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Run Debug Build
-          command: ./gradlew assembleDebug
+          name: Run Build
+          command: ./gradlew clean assembleRelease
       - store_artifacts:
           # path is a path to the file or directory to be uploaded as artifact
           path: app/build/outputs/apk/
