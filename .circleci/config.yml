@@ -31,35 +31,9 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Run Build
-          command: ./gradlew clean assembleRelease
+          name: Run Debug Build
+          command: ./gradlew assembleDebug
       - store_artifacts:
           # path is a path to the file or directory to be uploaded as artifact
           path: app/build/outputs/apk/
           destination: apks/
-      - persist_to_workspace:
-                  root: .
-                  paths:
-                      - .
-  deploy:
-    machine:
-      image: ubuntu-1604:201903-01 
-    enabled: true
-    working_directory: ~/code
-    steps:
-       - attach_workspace:
-                  at: .
-       - run:
-          name: Deploy
-          command: 'aws s3 sync ./app/build/outputs/apk/release/ s3://covidcare-artifact'  
-workflows: # Define a Workflow running the build job, then the deploy job
-    version:  2
-    build-deploy:
-     jobs:
-       - build
-       - deploy:
-           requires:
-             - build
-           filters:
-             branches:
-               only: master # Only deploys when the commit is on the Master branch      
