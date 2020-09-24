@@ -1,4 +1,4 @@
-# Verion of circle ci used
+# Verion of Circle CI used
 version: 2
 # jobs key represents the phase
 jobs:
