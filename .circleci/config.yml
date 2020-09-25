@@ -14,33 +14,43 @@ jobs:
     steps:
         # checkout step is used to operate on the codebase
       - checkout
+        
         # Creating the keystore.properties file
       - run:
          name: Create keystore.properties
          command: printf 'releaseKeyAlias=%s\nreleaseKeyPassword=%s\nreleaseKeyStore=%s\nreleaseStorePassword=%s' ${releaseKeyAlias} ${releaseKeyPassword} ${releaseKeyStore} ${releaseStorePassword} > keystore.properties
+      
       - restore_cache:
           # Pull down the cache if present
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      
       - run:
          # Permissions for Fradlew dependencies
          name: Chmod permissions 
          command: sudo chmod +x ./gradlew
+      
       - run:
           name: Download Dependencies
           # Task for Pulling the project dependencies
           command: ./gradlew androidDependencies
+        
         # save_cache step will store the dependencies in order to speed things up for next time.  
       - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      
       - run:
           name: Release Build
           command: ./gradlew assembleRelease
+      
       - store_artifacts:
           # path is a path to the file or directory to be uploaded as artifact
           path: app/build/outputs/apk/
           destination: apks/
+        
+        # persist_to_workspace is used to store the output of build job in a temporary file to be used
+        # by another job in the workflow.
       - persist_to_workspace:
                   root: .
                   paths:
@@ -51,11 +61,14 @@ jobs:
     enabled: true
     working_directory: ~/code
     steps:
+         # attach_workspace is used to attach the workflow's workspace to the current container.
        - attach_workspace:
                   at: .
+         # Deploy stage to publish the apk to AWS S3 bucket.
        - run:
           name: Deploy
           command: 'aws s3 sync ./app/build/outputs/apk/prod/release/ s3://covidcare-artifact'  
+
 workflows: # Define a Workflow running the build job, then the deploy job
     version:  2
     build-deploy:
@@ -66,4 +79,4 @@ workflows: # Define a Workflow running the build job, then the deploy job
              - build
            filters:
              branches:
-               only: prod_build # Only deploys when the commit is on the Master branch      
+               only: prod_build # Only deploys when the commit is on the prod_build branch      
