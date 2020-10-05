@@ -23,21 +23,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-     signingConfigs {
-        release {
-            storeFile file('covidcare.jks')
-            storePassword '********'
-            keyAlias '*******'
-            keyPassword '********'
-        }
-    }
     productFlavors {
         dev{
             applicationId "com.org.covidcare"
             versionCode 1
             versionName "1.0"
             dimension "dev"
-            signingConfig signingConfigs.release
+
         }
     }
 }
@@ -73,6 +65,20 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
     implementation 'com.google.firebase:firebase-messaging-directboot:20.2.4'
     compileOnly 'com.google.android.wearable:wearable:2.5.0'
+
+    // Vungle SDK
+    implementation 'com.vungle:publisher-sdk-android:6.8.0'
+
+    implementation 'androidx.core:core:1.3.1'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    // When appcompat is being used, core and localbroadcastmanager are the dependencies
+    // that is getting included
+    // implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    // Recommended for SDK to be able to get Android Advertising ID
+    implementation 'com.google.android.gms:play-services-basement:17.4.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 
 }
 

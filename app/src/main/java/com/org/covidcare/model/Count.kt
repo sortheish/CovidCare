@@ -2,6 +2,7 @@ package com.org.covidcare.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 
 /**
  * Created by ishwari s on 6/23/2020.
@@ -24,7 +25,7 @@ class Count(
     )
 
     override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("Not yet implemented")
+        Log.d("WriteToParcel", "WriteToParcel")
     }
 
     override fun describeContents(): Int {

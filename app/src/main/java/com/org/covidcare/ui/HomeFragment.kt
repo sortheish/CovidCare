@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,15 +16,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.org.covidcare.R
 import com.org.covidcare.adapter.DataCountAdapter
 import com.org.covidcare.model.Count
-import com.org.covidcare.presenter.CountriesServicePresenter
-import com.org.covidcare.presenter.StateServicePresenter
+import com.org.covidcare.presenter.*
 import com.org.covidcare.service.CountriesService
 import com.org.covidcare.service.StateService
 import com.org.covidcare.utilities.*
 import com.org.covidcare.utilities.CovidData.dataCount
 import com.org.covidcare.view.GraphViewPresenter
+import com.vungle.warren.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-
 
 /**
  * Created by ishwari s on 6/17/2020.
@@ -42,11 +39,14 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     private lateinit var listData: RecyclerView
     private lateinit var radioGroupDetailData :RadioGroup
     private var dataCountAdapterAdapter: DataCountAdapter? = null
+    private var adPresenter: AdPresenter? = null
 
     private var toggleButtonValue: String? = INDIA
 
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()
+        lateinit var vungleNativeAd: VungleNativeAd
+        lateinit var nativeAdView: View
     }
 
     override fun onCreateView(
@@ -54,11 +54,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val view = inflater.inflate(
-            R.layout.fragment_home, container,
-            false
-        )
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         init(view)
         countryPresenter!!.getCountries { countrySuccess ->
             if (countrySuccess) {
@@ -167,6 +163,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
     private fun setUpAdapter(dataCount: ArrayList<Count>) {
         dataCountAdapterAdapter = DataCountAdapter(dataCount) { data_value ->
             if (toggleButtonValue.equals(INDIA)) {
+                DashboardActivity.count += 1
                 openFragment(StateDetailFragment.newInstance(data_value))
             }
         }
@@ -187,6 +184,7 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
         statePresenter = StateServicePresenter(this)
 
         graphPresenter = GraphViewPresenter()
+        adPresenter = AdPresenter()
     }
 
     override fun setCountryData(view: View) {
@@ -260,6 +258,16 @@ class HomeFragment : Fragment(), CountriesService.CountriesView,
             .setTitle(getString(R.string.text_alert_internet))
             .setPositiveButton("Ok", /* listener = */ null)
             .show()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adPresenter?.getMrecAd(view)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        vungleNativeAd.finishDisplayingAd()
     }
 }
 

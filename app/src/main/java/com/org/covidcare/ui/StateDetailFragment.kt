@@ -1,6 +1,8 @@
 package com.org.covidcare.ui
 
+
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.org.covidcare.R
 import com.org.covidcare.adapter.DistrictAdapter
 import com.org.covidcare.model.Count
+import com.org.covidcare.presenter.AdPresenter
 import com.org.covidcare.presenter.DistrictServicePresenter
 import com.org.covidcare.presenter.StateServicePresenter
 import com.org.covidcare.service.DistrictService
@@ -28,6 +31,7 @@ class StateDetailFragment : Fragment(), DistrictService.DistrictView, StateServi
     private var districtPresenter: DistrictServicePresenter? = null
     private var statePresenter: StateServicePresenter? = null
     private var graphPresenter: GraphViewPresenter? = null
+    private lateinit var adPresenter: AdPresenter
 
     companion object {
         private const val ARG_PARAM = "countObject"
@@ -53,6 +57,7 @@ class StateDetailFragment : Fragment(), DistrictService.DistrictView, StateServi
         val view = inflater.inflate(R.layout.fragment_state_detail, container, false)
         init(view)
         districtPresenter?.setDistrictData(view)
+        Log.d("onCreateView", "onCreateView")
         return view
     }
 
@@ -107,4 +112,11 @@ class StateDetailFragment : Fragment(), DistrictService.DistrictView, StateServi
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (DashboardActivity.count == 5) {
+            adPresenter = AdPresenter()
+            adPresenter.getInterstitialAd()
+        }
+    }
 }

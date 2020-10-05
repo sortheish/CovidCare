@@ -63,3 +63,8 @@ const val FIREBASE_CYBAGIANS_USERNAME = "username"
 const val FIREBASE_CYBAGIANS_EMAIL_ID = "emailid"
 const val FIREBASE_CYBAGIANS_EMP_ID = "employeeid"
 const val FIREBASE_DATABASE_APP_USERS ="app_users"
+
+// Vungle sdk ad ids
+const val BANNER_AD_ID = "BANNER-2034855"
+const val MREC_AD_ID = "MRAID-3374957"
+const val INTERSTITIAL_AD_ID = "LOCAL-9231064"
